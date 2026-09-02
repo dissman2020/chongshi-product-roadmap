@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>崇实科技 · 能力缺口与产品化方案</title>
+  <style>
+    :root {
+      --primary: #0e7a5f;
+      --primary-2: #16a076;
+      --ink: #1f2937;
+      --muted: #57606a;
+      --line: #e5e7eb;
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --p0: #d64545;
+      --p1: #d97706;
+      --p0bg: #fdecec;
+      --p1bg: #fdf3e3;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .08);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 20px 72px; }
+
+    header.hero {
+      background: linear-gradient(135deg, #0b5d49 0%, #0e7a5f 55%, #16a076 100%);
+      color: #fff;
+      padding: 40px 24px 34px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      font-size: 13px;
+      letter-spacing: .08em;
+      opacity: .85;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    header.hero h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.25; }
+    header.hero p { margin: 0; opacity: .92; font-size: 15px; max-width: 780px; }
+    .badges { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.28);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    nav.tabs {
+      display: flex;
+      gap: 8px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      background: rgba(244,246,248,.94);
+      backdrop-filter: blur(6px);
+      padding: 10px 0;
+      z-index: 5;
+    }
+    nav.tabs button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      padding: 9px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all .15s ease;
+    }
+    nav.tabs button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    section { display: none; animation: fade .25s ease; }
+    section.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    .section-title { font-size: 21px; margin: 6px 0 4px; }
+    .section-sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid { display: grid; gap: 16px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 860px) {
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+    }
+
+    .lead { font-size: 15px; margin: 0 0 16px; }
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      background: #f8fafc;
+      border-left: 3px solid var(--primary-2);
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    /* radar */
+    .radar-layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: center; }
+    @media (max-width: 860px) { .radar-layout { grid-template-columns: 1fr; } }
+    .legend { display: flex; flex-direction: column; gap: 10px; }
+    .legend .row { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+    .swatch { width: 18px; height: 18px; border-radius: 5px; flex: 0 0 auto; }
+    .legend .big { font-size: 16px; font-weight: 700; }
+    .legend .hint { color: var(--muted); font-size: 13px; }
+    .radar-holder { display: flex; justify-content: center; }
+    .radar-holder svg { width: 100%; max-width: 420px; height: auto; }
+
+    /* filters */
+    .filters { display: flex; gap: 8px; margin: 18px 0 14px; flex-wrap: wrap; align-items: center; }
+    .filters .lbl { color: var(--muted); font-size: 13px; margin-right: 4px; }
+    .filters button {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .filters button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    .gaps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 860px) { .gaps { grid-template-columns: 1fr; } }
+    .gap {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+    .gap .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .gap h4 { margin: 0; font-size: 15px; }
+    .layer-tag {
+      font-size: 11px;
+      color: var(--primary);
+      background: #e8f6f0;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .prio { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .prio.p0 { color: var(--p0); background: var(--p0bg); }
+    .prio.p1 { color: var(--p1); background: var(--p1bg); }
+    .gap .body { margin-top: 10px; font-size: 13.5px; }
+    .gap .body dl { margin: 0; }
+    .gap .body dt { font-weight: 600; color: var(--muted); font-size: 12px; margin-top: 6px; }
+    .gap .body dd { margin: 0 0 4px; }
+    .gap .action {
+      margin-top: 10px;
+      padding: 9px 11px;
+      background: #f6fbf9;
+      border-left: 3px solid var(--primary-2);
+      border-radius: 6px;
+      font-size: 13px;
+      color: #134e40;
+    }
+    .gap .action b { color: var(--primary); }
+
+    /* concept */
+    .pill { display: inline-block; background: #eef7f3; color: #0b5d49; font-size: 12px; padding: 2px 9px; border-radius: 999px; margin-right: 6px; }
+    .module {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fbfcfd;
+    }
+    .module h4 { margin: 0 0 6px; font-size: 15px; }
+    .module p { margin: 0; font-size: 13.5px; color: var(--muted); }
+    .seq { counter-reset: s; }
+    .seq .step { position: relative; padding-left: 40px; margin-bottom: 14px; }
+    .seq .step::before {
+      counter-increment: s;
+      content: counter(s);
+      position: absolute;
+      left: 0; top: 2px;
+      width: 28px; height: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+    }
+
+    /* roadmap */
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px; top: 4px; bottom: 4px;
+      width: 2px;
+      background: var(--line);
+    }
+    .phase { position: relative; margin-bottom: 12px; }
+    .phase::before {
+      content: "";
+      position: absolute;
+      left: -26px; top: 7px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--primary);
+    }
+    .phase-head {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      cursor: pointer;
+    }
+    .phase-head .when { font-size: 12px; color: #fff; background: var(--primary); padding: 2px 9px; border-radius: 6px; white-space: nowrap; }
+    .phase-head h4 { margin: 0; font-size: 15px; }
+    .phase-body { display: none; margin-top: 8px; font-size: 13.5px; color: var(--muted); }
+    .phase.open .phase-body { display: block; }
+    .phase-body ul { margin: 6px 0 0; padding-left: 18px; }
+
+    /* actions */
+    .action-check { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; margin-bottom: 10px; cursor: pointer; }
+    .action-check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--primary); }
+    .action-check.checked { background: #f0faf6; border-color: #bfe6d5; }
+    .action-check .num { font-weight: 700; color: var(--primary); }
+    .action-check.checked .num { text-decoration: line-through; color: var(--muted); }
+    .acc-item { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; overflow: hidden; background: #fff; }
+    .acc-head { padding: 12px 14px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .acc-head .caret { transition: transform .15s ease; color: var(--muted); }
+    .acc-item.open .acc-head .caret { transform: rotate(90deg); }
+    .acc-body { display: none; padding: 0 14px 12px; color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--line); padding-top: 10px; }
+    .acc-item.open .acc-body { display: block; }
+
+    footer { color: var(--muted); font-size: 12.5px; text-align: center; margin-top: 28px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="kicker">Chongshi Technology · Capability Gap &amp; Product Roadmap</p>
+      <h1>崇实科技 · 能力缺口与产品化方案</h1>
+      <p>基于《两款产品可行性与初步方案 V0.1》的交互式摘要：把“官网已公开能力”与“两款产品真正需要的产品化能力”之间的缺口，拆成可验收的补齐动作。</p>
+      <div class="badges">
+        <span class="badge">一个底座</span>
+        <span class="badge">两个产品</span>
+        <span class="badge">先诊断 · 后闭环</span>
+        <span class="badge">90–145 人月</span>
+        <span class="badge">12–15 月首版</span>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button data-tab="gap" class="active">能力缺口</button>
+      <button data-tab="plan">方案构思</button>
+      <button data-tab="roadmap">路线图</button>
+      <button data-tab="actions">行动建议</button>
+    </nav>
+
+    <!-- 能力缺口 -->
+    <section id="gap" class="active">
+      <h2 class="section-title">崇实目前缺什么</h2>
+      <p class="section-sub">结论：崇实的“感知、接入、边缘、平台、基础 AI 与控制”已经很强，真正缺的是“把节能做成可解释、可核验、可复制的产品化闭环”。</p>
+
+      <div class="card radar-layout">
+        <div class="legend">
+          <div class="row"><span class="swatch" style="background:#cbd5e1"></span><span><span class="big">现有能力</span>（官网已公开口径）</span></div>
+          <div class="row"><span class="swatch" style="background:#0e7a5f"></span><span><span class="big">目标能力</span>（产品化所需）</span></div>
+          <p class="hint">雷达图按 0–5 表示成熟度。差距最大的维度是“诊断与方案”与“机理模型”，这两块正是形成差异化、可验收节能证据链的关键。</p>
+          <div class="note small">成熟度为基于公开资料的定性评估，用于识别缺口，不代表精确打分。</div>
+        </div>
+        <div class="radar-holder">
+          <svg id="radar" viewBox="0 0 420 360" role="img" aria-label="现有与目标能力雷达图"></svg>
+        </div>
+      </div>
+
+      <div class="filters">
+        <span class="lbl">按优先级筛选：</span>
+        <button data-filter="all" class="active">全部（18 项）</button>
+        <button data-filter="p0">P0 必须补齐</button>
+        <button data-filter="p1">P1 关键增强</button>
+      </div>
+
+      <div class="gaps" id="gaps"></div>
+    </section>
+
+    <!-- 方案构思 -->
+    <section id="plan">
+      <h2 class="section-title">方案构思</h2>
+      <p class="section-sub">核心思路：不做两套互不相关的软件，而是共用一套“冷站智能内核”，产品一与产品二只是运行模式与界面不同。</p>
+
+      <div class="card" style="margin-bottom:16px">
+        <h3 style="margin-top:0">推荐顺序：先卖诊断，再卖闭环</h3>
+        <div class="seq">
+          <div class="step"><b>产品二先行</b>——先做“智慧能耗模拟与测算软件”的诊断 MVP，用于售前诊断、方案预演和验收。</div>
+          <div class="step"><b>共享底座沉淀</b>——把经过现场验证的模型、规则、方案库统一到“冷站智能内核”。</div>
+          <div class="step"><b>下沉到 AI Box</b>——再把成熟能力下沉到“中央空调机房节能智控 AI Box”，降低直接闭环的安全风险。</div>
+        </div>
+      </div>
+
+      <h3 style="margin:6px 0 12px">共享底座：冷站智能内核（6 个模块）</h3>
+      <div class="grid three">
+        <div class="module"><span class="pill">1</span><h4>统一冷站图模型</h4><p>设备节点 + 水路/控制关系边描述真实拓扑，用标准模板实例化，不逐项目编程。</p></div>
+        <div class="module"><span class="pill">2</span><h4>数据治理层</h4><p>点位映射、时间对齐、缺失补全、漂移/卡死、传感器互校、质量评分与可用性降级。</p></div>
+        <div class="module"><span class="pill">3</span><h4>透明灰箱模型库</h4><p>冷量 / COP / kW·RT / 泵风机相似定律 / 冷却塔逼近度，叠加现场残差校准与不确定度。</p></div>
+        <div class="module"><span class="pill">4</span><h4>多约束优化器</h4><p>离散候选 + 连续参数 + 规则剪枝，满足温度/流量/压差/最小启停/冗余等约束。</p></div>
+        <div class="module"><span class="pill">5</span><h4>诊断与技改知识库</h4><p>可验证证据规则 + 审核过的措施库，输出问题、证据、影响量级、可信度与建议。</p></div>
+        <div class="module"><span class="pill">6</span><h4>基线与节能量核验</h4><p>按 ISO 50006 建立计量边界、基线期与报告期，按负荷/天气/生产等变量归一化。</p></div>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <h3 style="margin-top:0">产品一 · 节能智控 AI Box</h3>
+          <p class="muted small">首版只做典型水冷冷水机房（离心/螺杆冷机、冷冻/冷却泵、冷却塔、常规旁通、一次泵系统）。</p>
+          <ul class="small" style="padding-left:18px">
+            <li>架构：协议/BMS → 拓扑映射 → 数据门控 → 负荷预测 → 灰箱模型 → 多约束寻优 → 策略回执 → 分级权限 → PLC/DDC 执行 → 反馈校准。</li>
+            <li>AI 只写白名单设定值，不绕过设备保护；底层 PLC/DDC 联锁保留。</li>
+            <li>“傻瓜式部署”= 模板化少编程：1–3 天硬件接入，2–8 周数据复核与 Shadow 验证。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">产品二 · 智慧能耗模拟与测算软件</h3>
+          <p class="muted small">核心差异化不是重写能耗模拟内核，而是“既有冷站快速校准 + 痛点归因 + 技改组合 + 收益区间与证据链”。</p>
+          <ul class="small" style="padding-left:18px">
+            <li>三级精度：快速筛查级 → 校准诊断级 → 投资/核验级。</li>
+            <li>方案生成不靠大模型自由发挥，而是“诊断规则 → 措施库候选 → 逐时模拟 → 多目标排序 → 大模型只负责解释与报告”。</li>
+            <li>第三方内核边界：先做鸿业/DeST 结果导入，正式授权或自研冷站机理引擎，必要时评估 EnergyPlus。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 style="margin-top:0">投入与团队</h3>
+        <p class="lead" style="margin-bottom:8px">充分复用现有资产下：首个可商业试点版本约 <b>12–15 个月、90–145 人月</b>；成熟 V1 建议按 <b>18–24 个月</b>规划。两条产品线同时完全铺开会显著增加返工风险。</p>
+        <p class="muted small">推荐核心团队 8–11 人：产品负责人 1、暖通机理与节能算法 2–3、优化/机器学习 2、边缘与协议 2、后端与数据平台 2–3、前端/交互 1–2、测试与 M&amp;V 1–2、现场调试 2–3（可与交付团队共享）。</p>
+      </div>
+    </section>
+
+    <!-- 路线图 -->
+    <section id="roadmap">
+      <h2 class="section-title">实施路线图</h2>
+      <p class="section-sub">点击每一阶段查看关键产出。阶段 3 起才进入 AI Box 的现场闭环，前面的工作都是为了让诊断与模型先被验证。</p>
+      <div class="card">
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- 行动建议 -->
+    <section id="actions">
+      <h2 class="section-title">建议立即启动的四项工作</h2>
+      <p class="section-sub">勾选即视为“已纳入计划”，状态保存在本机浏览器。</p>
+      <div id="actionList"></div>
+
+      <h3 style="margin:22px 0 12px">需要崇实内部确认的 10 项输入</h3>
+      <div id="confirmList"></div>
+    </section>
+
+    <footer>
+      依据：崇实科技官网公开资料 + 《两款产品可行性与初步方案 V0.1》（2026-09-01）。
+      节能率等数值为企业官网披露口径，本页未做第三方验证。
+    </footer>
+  </div>
+
+  <script>
+    // ---------- 雷达图 ----------
+    const dims = ["感知与接入", "数据治理", "机理模型", "优化与控制", "诊断与方案", "安全与交付"];
+    const current = [5, 3, 3, 3, 2, 3];
+    const target = [5, 5, 5, 5, 5, 5];
+
+    function drawRadar() {
+      const svg = document.getElementById("radar");
+      const cx = 210, cy = 178, R = 118;
+      const n = dims.length;
+      const angle = i => (Math.PI * 2 * i) / n - Math.PI / 2;
+      const pt = (i, r) => [cx + Math.cos(angle(i)) * r, cy + Math.sin(angle(i)) * r];
+      let out = "";
+
+      // grid rings
+      for (let level = 1; level <= 5; level++) {
+        const r = (R * level) / 5;
+        const pts = dims.map((_, i) => pt(i, r).map(v => v.toFixed(1)).join(",")).join(" ");
+        out += `<polygon points="${pts}" fill="none" stroke="#e5e7eb" stroke-width="1"/>`;
+      }
+      // axes
+      for (let i = 0; i < n; i++) {
+        const [x, y] = pt(i, R);
+        out += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#e5e7eb" stroke-width="1"/>`;
+      }
+      // labels
+      for (let i = 0; i < n; i++) {
+        const [x, y] = pt(i, R + 22);
+        out += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#374151">${dims[i]}</text>`;
+      }
+      const poly = arr => arr.map((v, i) => pt(i, (R * v) / 5).map(x => x.toFixed(1)).join(",")).join(" ");
+      out += `<polygon points="${poly(current)}" fill="rgba(148,163,184,.28)" stroke="#94a3b8" stroke-width="2"/>`;
+      out += `<polygon points="${poly(target)}" fill="rgba(14,122,95,.16)" stroke="#0e7a5f" stroke-width="2"/>`;
+      svg.innerHTML = out;
+    }
+    drawRadar();
+
+    // ---------- 缺口数据 ----------
+    const gaps = [
+      { layer: "数据与拓扑", prio: "p0", t: "统一冷站图模型", cur: "已有设备模型与点位映射", goal: "水路+控制关系拓扑图模型，标准模板实例化", act: "抽象冷机/泵/塔/阀/传感器/电表节点与边，做模板库" },
+      { layer: "数据与拓扑", prio: "p0", t: "数据质量门控", cur: "仅异常值清洗、单位转换", goal: "缺失补全、漂移/卡死、传感器互校、质量评分、可用性降级", act: "质量门槛前置于模型与控制，低质量自动降级到建议模式" },
+      { layer: "数据与拓扑", prio: "p1", t: "标准化点位与 P&ID 模型", cur: "需内部确认命名标准", goal: "标准点位命名、P&ID 数字模型、控制策略模板", act: "冻结命名规范与点位字典，沉淀为可复用模板" },
+      { layer: "数据与拓扑", prio: "p0", t: "脱敏黄金数据集", cur: "100+ 案例，分项数据完整性待确认", goal: "高效/一般/问题站三类脱敏黄金集", act: "选 3 个历史项目，先统一公式重算冷量/COP/kW·RT" },
+
+      { layer: "机理与算法", prio: "p0", t: "冷机/泵/塔灰箱模型库", cur: "TRNSYS 自适应仿真", goal: "额定曲线 + 部分负荷/水温修正 + 现场残差校准 + 不确定度", act: "建立可现场校准的灰箱设备模型库，输出置信区间" },
+      { layer: "机理与算法", prio: "p0", t: "多约束优化器", cur: "全局寻优、参数组合搜索", goal: "离散候选 + 连续参数 + 规则剪枝 + 硬约束", act: "先做“候选组合+参数搜索+规则剪枝”，暂不上强化学习" },
+      { layer: "机理与算法", prio: "p1", t: "可解释策略回执", cur: "SHAP 特征贡献", goal: "机理+约束+规则引擎的完整策略依据", act: "每次优化输出“为什么调/调什么/依据/效果/安全/回退”六要素" },
+      { layer: "机理与算法", prio: "p1", t: "不确定度量化", cur: "模型预测，未公开置信区间", goal: "置信区间 + 回退条件", act: "残差模型与预测都输出不确定度，并绑定回退逻辑" },
+
+      { layer: "诊断与方案", prio: "p0", t: "痛点诊断规则库", cur: "故障预测、报警", goal: "20–30 条可验证证据规则", act: "大温差小流量、低 PLR、旁通混流、逼近度异常等规则化" },
+      { layer: "诊断与方案", prio: "p1", t: "技改措施库 + 组合优化", cur: "无公开措施库", goal: "10–15 类措施 + 逐时模拟 + 多目标排序", act: "控制重整定、温度重置、泵塔变频、旁通治理、计量补齐等入库" },
+      { layer: "诊断与方案", prio: "p0", t: "基线与节能量核验", cur: "能耗汇总、COP 计算", goal: "ISO 50006 计量边界 + 相关变量归一化 + M&V", act: "建立基线期/报告期，按负荷/天气/生产/IT 负荷归一化" },
+      { layer: "诊断与方案", prio: "p1", t: "经济性与敏感性", cur: "未公开", goal: "现金流、回收期、敏感性分析", act: "接入分时电价、需量电费、运维与施工成本" },
+
+      { layer: "控制与安全", prio: "p0", t: "四级权限放权", cur: "PLC 容灾切换", goal: "Shadow / 建议 / 确认 / 自动 四级", act: "先只读/建议，再分设备、分变量逐步开放写值" },
+      { layer: "控制与安全", prio: "p0", t: "安全回退与审计", cur: "断网切传统 PLC 模式", goal: "白名单设定值、传感异常降级、审计", act: "故障注入/断网/异常点位/人工接管测试全量覆盖" },
+      { layer: "控制与安全", prio: "p1", t: "傻瓜式部署向导", cur: "依赖工程实施", goal: "模板化、少编程的向导", act: "点位扫描、拓扑模板匹配、1–3 天硬件 + 2–8 周校准" },
+
+      { layer: "产品化", prio: "p1", t: "三级精度产品设计", cur: "单一能力输出", goal: "筛查级 / 诊断级 / 投资核验级", act: "明确每级输入、输出与“不承诺准确保证”的边界" },
+      { layer: "产品化", prio: "p1", t: "第三方授权边界", cur: "未确认", goal: "鸿业/DeST/TRNSYS 授权或自有引擎", act: "先做结果导入适配器，再谈 API/SDK/OEM 授权" },
+      { layer: "产品化", prio: "p1", t: "验收指标体系", cur: "以节能率为主", goal: "映射率/数据质量/误差/违规率/采纳率", act: "研发验收不止看节能率，加入可测的过程指标" },
+    ];
+
+    const gapsEl = document.getElementById("gaps");
+    function renderGaps(filter) {
+      const list = gaps.filter(g => filter === "all" || g.prio === filter);
+      gapsEl.innerHTML = list.map(g => `
+        <div class="gap" data-layer="${g.layer}">
+          <div class="top">
+            <h4>${g.t}</h4>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="layer-tag">${g.layer}</span>
+              <span class="prio ${g.prio}">${g.prio.toUpperCase()}</span>
+            </div>
+          </div>
+          <div class="body">
+            <dl>
+              <dt>现状</dt><dd>${g.cur}</dd>
+              <dt>目标</dt><dd>${g.goal}</dd>
+            </dl>
+          </div>
+          <div class="action"><b>补齐动作</b>：${g.act}</div>
+        </div>
+      `).join("");
+    }
+    renderGaps("all");
+
+    // ---------- 筛选 ----------
+    document.querySelectorAll("[data-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderGaps(btn.dataset.filter);
+      });
+    });
+
+    // ---------- Tabs ----------
+    document.querySelectorAll("#tabs button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#tabs button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    // ---------- 路线图 ----------
+    const phases = [
+      { when: "0–6 周", t: "阶段 0 · 边界与数据审计", items: ["选定水冷冷站首版边界", "盘点 E³/TRNSYS/边缘脑机/平台/专利可复用性", "明确第三方授权与接口边界", "3 类站房点位与数据质量审计", "冻结能效指标与策略回执模板"] },
+      { when: "2–4 月", t: "阶段 1 · 共享底座 + 诊断 MVP", items: ["冷站图模型、设备库、数据清洗、快速估算", "COP / kW·RT / 泵塔能效 / 低效规则 / 缺数提示", "Excel/点表导入、基础报告、三级精度标识", "形成可售前的产品二 MVP"] },
+      { when: "4–7 月", t: "阶段 2 · 校准模型 + 方案优化", items: ["冷机泵塔灰箱模型与置信区间", "逐时仿真、基线调整、技改措施库与经济性", "2–3 个历史项目回放验证", "建立模型与诊断回归测试集"] },
+      { when: "6–10 月", t: "阶段 3 · AI Box Shadow 试点", items: ["点位向导、拓扑模板、边缘推理、约束优化", "策略回执、Shadow、人工确认、限幅、回退", "低风险数据完整站房只读/建议试点", "与现有控制策略同工况对比"] },
+      { when: "10–15 月", t: "阶段 4 · 受控闭环 + 产品化", items: ["分设备、分变量逐步开放写值", "故障注入/断网/异常点位/手动接管测试", "固化安装包、模板、实施清单、验收方法", "形成水冷冷站标准版与诊断软件正式版"] },
+      { when: "15–24 月", t: "阶段 5 · 跨季节验证 + 扩品", items: ["跨季节 M&V、模型漂移、设备退化验证", "扩展空气源热泵、复杂水系统、蓄冷、末端联动", "按电子厂房/医院/数据中心/商业建筑沉淀模板"] },
+    ];
+    document.getElementById("timeline").innerHTML = phases.map((p, i) => `
+      <div class="phase${i === 0 ? " open" : ""}">
+        <div class="phase-head">
+          <span class="when">${p.when}</span>
+          <h4>${p.t}</h4>
+        </div>
+        <div class="phase-body"><ul>${p.items.map(x => `<li>${x}</li>`).join("")}</ul></div>
+      </div>
+    `).join("");
+    document.querySelectorAll(".phase-head").forEach(h => {
+      h.addEventListener("click", () => h.parentElement.classList.toggle("open"));
+    });
+
+    // ---------- 四项行动（可勾选） ----------
+    const actions = [
+      { t: "选 3 个历史项目建立脱敏“黄金数据集”", d: "高效站、一般站、问题站各一个。" },
+      { t: "用统一公式重算冷量、COP、kW·RT 和分项能耗", d: "先验证仪表口径与现有宣传口径。" },
+      { t: "做 20–30 条可验证诊断规则 + 10–15 类技改措施库", d: "规则要带证据、影响量级、可信度与验证方法。" },
+      { t: "在一个数据完整站房做 4 周 Shadow", d: "对比现有策略、模型预测、约束与可执行率。" },
+    ];
+    function loadActions() {
+      try { return JSON.parse(localStorage.getItem("cs_actions") || "[]"); } catch { return []; }
+    }
+    const checked = new Set(loadActions());
+    const actionList = document.getElementById("actionList");
+    actionList.innerHTML = actions.map((a, i) => `
+      <label class="action-check${checked.has(i) ? " checked" : ""}">
+        <input type="checkbox" ${checked.has(i) ? "checked" : ""} data-i="${i}" />
+        <div><span class="num">${i + 1}.</span> <b>${a.t}</b><div class="muted small">${a.d}</div></div>
+      </label>
+    `).join("");
+    actionList.querySelectorAll("input").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const i = Number(inp.dataset.i);
+        const set = new Set(loadActions());
+        if (inp.checked) set.add(i); else set.delete(i);
+        localStorage.setItem("cs_actions", JSON.stringify([...set]));
+        inp.closest(".action-check").classList.toggle("checked", inp.checked);
+      });
+    });
+
+    // ---------- 10 项确认 ----------
+    const confirms = [
+      "现有 E³、TRNSYS、边缘脑机、平台中，哪些已有可维护源代码，哪些只是项目定制？",
+      "100+ 高效机房案例中，有多少具备连续分项功率、流量、温差、频率与天气数据？",
+      "是否已有设备性能曲线库、点位命名标准、P&ID 数字模型和控制策略模板？",
+      "产品一首版的目标站房规模、设备类型与协议范围是什么？",
+      "AI 允许写入哪些变量？谁批准安全边界？产品责任如何界定？",
+      "产品二是售前内部工具、独立 SaaS、私有化软件，还是与 AI Box 捆绑销售？",
+      "对“准确”的商业定义是什么：筛查、投资决策、投标承诺，还是合同节能量核验？",
+      "鸿业、DeST、TRNSYS 等第三方软件是否已有可用于商业集成的许可？",
+      "试点客户是否允许 Shadow、A/B 或交替策略测试，并提供完整历史数据？",
+      "目标电价、项目规模、可接受回收期与产品定价模型是什么？",
+    ];
+    document.getElementById("confirmList").innerHTML = confirms.map((c, i) => `
+      <div class="acc-item">
+        <div class="acc-head"><span>${i + 1}. ${c}</span><span class="caret">▶</span></div>
+        <div class="acc-body">作为阶段 0 需要冻结的输入，先与内部确认口径，再进入数据审计与产品边界。</div>
+      </div>
+    `).join("");
+    document.querySelectorAll(".acc-head").forEach(h => {
+      h.addEventListener("click", () => h.parentElement.classList.toggle("open"));
+    });
+  </script>
+</body>
+</html>
