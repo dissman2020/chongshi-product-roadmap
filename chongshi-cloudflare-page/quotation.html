@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="unit-rate" content="2200">
+<title>智控方案自动化 · 报价单（可勾选）</title>
+<style>
+:root{--text:#1f2937;--muted:#64748b;--line:#e2e8f0;--blue:#2563eb;
+--amber:#b45309;--amber-bg:#fffbeb;--card:#fff;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f9;color:var(--text);font-family:"Microsoft YaHei","PingFang SC",system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;line-height:1.7}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 60px}
+.hero{background:linear-gradient(135deg,#0f2d5c 0%,#1d4ed8 55%,#2f6ee0 100%);color:#fff;padding:32px 22px 28px;margin-bottom:22px}
+.hero .inner{max-width:1080px;margin:0 auto}
+.hero .kicker{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.82;margin-bottom:8px}
+.hero h1{margin:0 0 8px;font-size:27px;font-weight:700}
+.hero .sub{font-size:14px;opacity:.92;max-width:880px}
+.chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:9px}
+.chip{font-size:12.5px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3)}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin:18px 0 4px}
+.kpi{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:11px 13px}
+.kpi .k{font-size:11.8px;color:var(--muted);white-space:nowrap}
+.kpi .v{font-size:19px;font-weight:700;color:#0f2d5c;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi .n{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.kpi.hl{border-left-color:#0f2d5c;background:#f8fbff}
+.kpi.hl .v{font-size:22px}
+@media(max-width:960px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi .v{font-size:22px}.kpi.hl .v{font-size:24px}}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+h2{margin:0 0 6px;font-size:20px;padding-bottom:11px;border-bottom:2px solid #eef2f7}
+h2 .num{display:inline-block;min-width:30px;height:30px;line-height:30px;text-align:center;background:#1d4ed8;color:#fff;border-radius:8px;font-size:15px;margin-right:11px;vertical-align:2px;font-weight:700}
+p{margin:8px 0}
+ul{margin:8px 0;padding-left:22px}
+li{margin:4px 0}
+.tw{overflow-x:auto;margin:13px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-weight:700;color:#0f172a;white-space:nowrap;font-size:13.2px}
+tbody tr:nth-child(even){background:#fbfcfe}
+td.c,th.c{text-align:center;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.amt,th.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700;color:#0f2d5c}
+.master td.grp{text-align:center;white-space:nowrap;color:#1d4ed8;font-weight:700;font-size:13px}
+.master td.sel{text-align:center;width:50px}
+.master tbody tr:nth-child(even){background:transparent}
+.master tbody tr.req td{background:#fbfdff}
+.master tbody tr.opt td{background:#fffaf0}
+.master tbody tr.sub td{background:#e8f0fe !important;font-weight:700;border-color:#c7dafc}
+.master tbody tr.pto td{background:#dbe7fb !important;font-weight:700;border-color:#a9c6f7;font-size:14.2px}
+.master tbody tr.fee td{background:#f8fafc !important;color:#475569}
+.master tbody tr.grand td{background:#0f2d5c !important;color:#fff;font-weight:700;font-size:15px;border-color:#0f2d5c}
+.master thead th{position:sticky;top:0;z-index:2;box-shadow:0 1px 0 var(--line)}
+.master tbody tr.item.ck{cursor:pointer}
+.master tbody tr.item.ck:hover td{background:#fff8e1 !important}
+.master tbody tr.item.off td{opacity:.32}
+.master tbody tr.item.off td.sel{opacity:1}
+.master tbody tr.item.na td{opacity:.5}
+.master tbody tr.item.na td.sel{opacity:1}
+input[type=checkbox]{width:17px;height:17px;accent-color:#1d4ed8;cursor:pointer;vertical-align:-3px}
+input[type=checkbox]:disabled{cursor:not-allowed}
+.lock{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;background:#eef2f7;color:#64748b;border:1px solid #dbe2ea}
+.na-tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;margin-left:6px}
+.legend{display:flex;flex-wrap:wrap;gap:15px;font-size:12.8px;color:var(--muted);margin:9px 0 2px;align-items:center}
+.blk{border-radius:0 10px 10px 0;padding:12px 17px;margin:12px 0}
+.blk .lbl{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;padding:2px 9px;border-radius:999px;margin-bottom:7px}
+.note{background:#f8fafc;border-left:4px solid #94a3b8}.note .lbl{background:#64748b;color:#fff}
+.blk p:first-of-type{margin-top:0}.blk p:last-child{margin-bottom:0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
+@media print{body{background:#fff}section{break-inside:avoid;box-shadow:none}
+.hero{background:#0f2d5c !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="kicker">Quotation · Configurable</div>
+    <h1>智控方案自动化 · 报价单</h1>
+    <div class="sub">
+      勾选需要的模块，<b>总报价实时更新</b>。标「必」的为基础模块，不可取消。
+      统一单价 <b>2,200 元/人天</b>，金额 ＝ 人天 × 2,200。
+    </div>
+    <div class="chips">
+      <span class="chip">编制日期：2026-09-24</span>
+      <span class="chip">统一单价 2,200 元/人天</span>
+      <span class="chip">14 个模块 · 按需组合</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="kpis">
+    <div class="kpi"><div class="k">已选模块人天</div><div class="v"><span id="k-days">—</span> 人天</div><div class="n">基础模块 ＋ 已勾选模块</div></div>
+    <div class="kpi"><div class="k">人力成本</div><div class="v">¥<span id="k-human">—</span></div><div class="n">已选人天 × 2,200</div></div>
+    <div class="kpi"><div class="k">其他费用</div><div class="v">¥<span id="k-other">—</span></div><div class="n">工具、联调环境、实施保障等</div></div>
+    <div class="kpi hl"><div class="k">总报价</div><div class="v"><span id="k-total-w">—</span> 万</div><div class="n">¥<span id="k-total">—</span></div></div>
+    <div class="kpi hl"><div class="k">预计交付周期</div><div class="v"><span id="k-weeks">—</span> 周</div><div class="n">2 名工程师 · 理论最短 <span id="k-weeks-min">—</span> 周</div></div>
+  </div>
+
+  <section>
+    <h2><span class="num">1</span>价格说明</h2>
+    <ul>
+      <li><b>统一人天单价 2,200 元/人天</b>，所有金额 ＝ 人天 × 2,200，逐行可验算。</li>
+      <li><b>总报价</b> ＝ 人力成本 ＋ 其他费用（开发工具、联调环境、实施保障等）。</li>
+      <li>依赖关系：<b>箱体图生成</b>需在 BOM 验收后启动；<b>机电图转智控图</b>与<b>智控图转点表</b>相互独立，可与箱体图任意组合。</li>
+      <li>投入方式：2 名工程师全程在位；业务方需指定 1 名规则确认人，配合规则定义与验收。</li>
+      <li><b>交付周期</b>按 2 名工程师满负荷折算：理论最短 ＝ 总人天 ÷ 2 ÷ 5（周）；建议计划工期已预留约 15% 的沟通与返工余量，随勾选实时更新。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>模块选择与报价</h2>
+    <div class="legend">
+      <span><span class="lock">必</span> 基础模块（不可取消）</span>
+      <span><input type="checkbox" checked> 可选模块（默认全选）</span>
+      <span><span class="na-tag">暂缓</span> 暂不可选</span>
+      <span>点击整行即可切换勾选</span>
+    </div>
+    <div class="tw">
+      <table class="master">
+        <thead><tr><th class="c">选择</th><th class="c">分组</th><th class="c">模块</th><th>内容说明</th><th class="n">人天</th><th class="n">金额（元）</th></tr></thead>
+        <tbody>
+          <tr class="req item" data-req="1" data-d="7.5"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>平台底座</b></td><td>项目管理、数据存储、权限隔离、内网部署，其余模块均运行在其上</td><td class="n">7.5</td><td class="amt">16,500</td></tr>
+          <tr class="req item" data-req="1" data-d="16.0"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>企业知识库构建</b></td><td>统一沉淀品牌参数、既有项目案例、施工经验与配置规则；品牌库数据包含其中，作为选型、比价与生成的统一知识来源</td><td class="n">16.0</td><td class="amt">35,200</td></tr>
+          <tr class="req item" data-req="1" data-d="30.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>点表标准化</b></td><td>客户点表（Excel/CSV）导入，自动转为崇实标准点表并逐项校验，是配置与 BOM 的统一输入</td><td class="n">30.0</td><td class="amt">66,000</td></tr>
+          <tr class="req item" data-req="1" data-d="18.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按约束条件生成</b></td><td>限定品牌、系列、参数等约束条件自动选型，支持多品牌比价，结果可控可追溯</td><td class="n">18.0</td><td class="amt">39,600</td></tr>
+          <tr class="req item" data-req="1" data-d="15.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按既有案例生成</b></td><td>复用以往项目的施工经验，直接推荐经过验证的成熟配置，少走弯路</td><td class="n">15.0</td><td class="amt">33,000</td></tr>
+          <tr class="req item" data-req="1" data-d="11.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按约束条件生成</b></td><td>按崇实必须品模板逐项生成主材清单，与配置约束严格一致</td><td class="n">11.0</td><td class="amt">24,200</td></tr>
+          <tr class="req item" data-req="1" data-d="9.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按既有案例生成</b></td><td>参考既有项目经验，补充选配施工 / 网关 / 传感器等辅材</td><td class="n">9.5</td><td class="amt">20,900</td></tr>
+          <tr class="req item" data-req="1" data-d="8.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>方案与报价输出</b></td><td>方案文档自动组装、报价单生成、系统图挂载</td><td class="n">8.5</td><td class="amt">18,700</td></tr>
+          <tr class="req item" data-req="1" data-d="16.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>测试与验收</b></td><td>用例设计、自动化回归、与业务方逐项对账，作为整体验收环节收尾</td><td class="n">16.0</td><td class="amt">35,200</td></tr>
+          <tr class="req item" data-req="1" data-d="4.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>培训与运维交接</b></td><td>知识库与规则库的日常维护培训、操作手册与运维交接，保障上线后可持续运转</td><td class="n">4.0</td><td class="amt">8,800</td></tr>
+          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">必选模块人力成本小计</td><td class="n" id="d-p0">135.5</td><td class="amt" id="h-p0">298,100</td></tr>
+          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-p0">37,788</td></tr>
+          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>P0 预算总计</b></td><td class="n" id="td-p0">135.5</td><td class="amt" id="tm-p0">335,888</td></tr>
+          <tr class="opt item ck" data-d="32.0" data-fee="500"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>机电图转智控图</b></td><td>识别机电图纸并转化为智控图；成套图输出已有工具完成，本模块补齐这一关键转化环节</td><td class="n">32.0</td><td class="amt">70,400</td></tr>
+          <tr class="opt item ck" data-d="20.0" data-fee="300"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>智控图转点表</b></td><td>覆盖甲方仅提供图纸、无点表的项目场景，由智控图直接生成崇实标准点表</td><td class="n">20.0</td><td class="amt">44,000</td></tr>
+          <tr class="opt item ck" data-d="34.0" data-fee="400"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>箱体图生成</b></td><td>自动排布模块、标注接线位置，输出双栏箱体图（需在 BOM 验收后启动）</td><td class="n">34.0</td><td class="amt">74,800</td></tr>
+          <tr class="opt item na" data-d="7.0" data-fee="0"><td class="sel"><input type="checkbox" disabled></td><td class="grp">可选</td><td class="c"><b>能效分析</b><span class="na-tag">暂缓</span></td><td>暂缺必要的能耗数据与评估标准，待标准明确后另行评估</td><td class="n">—</td><td class="amt">—</td></tr>
+          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">可选模块人力成本小计</td><td class="n" id="d-opt">86.0</td><td class="amt" id="h-opt">189,200</td></tr>
+          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-opt">24,048</td></tr>
+          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>可选模块总计</b></td><td class="n" id="td-opt">86.0</td><td class="amt" id="tm-opt">213,248</td></tr>
+          <tr class="grand"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">所有预算总计（已勾选部分）</td><td class="n" id="d-g">221.5</td><td class="amt" id="m-g">549,136</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blk note">
+      <span class="lbl">说明</span>
+      <p><b>企业知识库</b>统一沉淀品牌、案例与规则，是配置与 BOM 两类生成路径的共同数据底座。<b>机电图转智控图</b>解决「从机电图到智控图」的转化缺口；<b>智控图转点表</b>覆盖无点表项目中可直接提供智控图的部分，两条路径相互独立。<b>箱体图生成</b>属于生产落地环节，与图纸类模块可任意组合。<b>能效分析</b>待能耗数据与评估标准明确后另行评估。</p>
+    </div>
+  </section>
+
+  <footer>
+    智控方案自动化 · 报价单 · 编制日期 2026-09-24<br>
+    统一单价 2,200 元/人天 · 金额 ＝ 人天 × 2,200 · 勾选模块后总计实时更新
+  </footer>
+
+</div>
+
+<script>
+const RATE=2200, MARGIN=0.12, FEE0=1800;
+const f=n=>n.toLocaleString('en-US');
+function recalc(){
+  let d0=0,h0=0;
+  document.querySelectorAll('tr.item[data-req]').forEach(tr=>{
+    d0+=parseFloat(tr.dataset.d); h0+=parseFloat(tr.dataset.d)*RATE;
+  });
+  const f0=d0>0?FEE0:0, o0=f0+(h0+f0)*MARGIN, t0=h0+o0;
+  let d1=0,h1=0,f1=0;
+  document.querySelectorAll('tr.item.opt:not(.na)').forEach(tr=>{
+    const c=tr.querySelector('input[type=checkbox]'), on=c&&c.checked;
+    tr.classList.toggle('off',!on);
+    if(on){const dd=parseFloat(tr.dataset.d);d1+=dd;h1+=dd*RATE;f1+=parseFloat(tr.dataset.fee||0);}
+  });
+  const o1=f1+(h1+f1)*MARGIN, t1=h1+o1;
+  document.getElementById('d-p0').textContent=d0.toFixed(1);
+  document.getElementById('h-p0').textContent=f(h0);
+  document.getElementById('o-p0').textContent=f(Math.round(o0));
+  document.getElementById('td-p0').textContent=d0.toFixed(1);
+  document.getElementById('tm-p0').textContent=f(Math.round(t0));
+  document.getElementById('d-opt').textContent=d1.toFixed(1);
+  document.getElementById('h-opt').textContent=f(h1);
+  document.getElementById('o-opt').textContent=f(Math.round(o1));
+  document.getElementById('td-opt').textContent=d1.toFixed(1);
+  document.getElementById('tm-opt').textContent=f(Math.round(t1));
+  document.getElementById('d-g').textContent=(d0+d1).toFixed(1);
+  document.getElementById('m-g').textContent=f(Math.round(t0+t1));
+  document.getElementById('k-days').textContent=(d0+d1).toFixed(1).replace(/\.0$/,'');
+  document.getElementById('k-human').textContent=f(Math.round(h0+h1));
+  document.getElementById('k-other').textContent=f(Math.round(o0+o1));
+  document.getElementById('k-total').textContent=f(Math.round(t0+t1));
+  document.getElementById('k-total-w').textContent=((t0+t1)/10000).toFixed(1);
+  const wks=(d0+d1)/(2*5);
+  document.getElementById('k-weeks').textContent=Math.ceil(wks/0.85);
+  document.getElementById('k-weeks-min').textContent=wks.toFixed(1);
+}
+document.querySelectorAll('input[type=checkbox]').forEach(c=>c.addEventListener('change',recalc));
+document.querySelectorAll('tr.item.ck').forEach(tr=>{
+  tr.addEventListener('click',e=>{
+    if(e.target.tagName==='INPUT')return;
+    const c=tr.querySelector('input[type=checkbox]');
+    if(c){c.checked=!c.checked;recalc();}
+  });
+});
+recalc();
+</script>
+</body>
+</html>
