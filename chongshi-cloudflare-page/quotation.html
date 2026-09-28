@@ -105,7 +105,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
       <li><b>总报价</b> ＝ 人力成本 ＋ 其他费用（开发工具、联调环境、实施保障等）。</li>
       <li>依赖关系：<b>箱体图生成</b>需在 BOM 验收后启动；<b>机电图转智控图</b>与<b>智控图转点表</b>相互独立，可与箱体图任意组合。</li>
       <li>投入方式：2 名工程师全程在位；业务方需指定 1 名规则确认人，配合规则定义与验收。</li>
-      <li><b>交付周期</b>按 2 名工程师满负荷折算：理论最短 ＝ 总人天 ÷ 2 ÷ 5（周）；建议计划工期已预留约 15% 的沟通与返工余量，随勾选实时更新。</li>
+      <li><b>交付周期</b>按 2 名工程师满负荷折算：理论最短 ＝ 总人天 ÷ 2 ÷ 5（每周按5工作日计算）；建议计划工期为计入日常沟通与返工等余量后的整体估算，随勾选实时更新。</li>
     </ul>
   </section>
 
@@ -192,7 +192,7 @@ function recalc(){
   document.getElementById('k-total').textContent=f(Math.round(t0+t1));
   document.getElementById('k-total-w').textContent=((t0+t1)/10000).toFixed(1);
   const wks=(d0+d1)/(2*5);
-  document.getElementById('k-weeks').textContent=Math.ceil(wks/0.85);
+  document.getElementById('k-weeks').textContent=Math.ceil(wks*1.15);
   document.getElementById('k-weeks-min').textContent=wks.toFixed(1);
 }
 document.querySelectorAll('input[type=checkbox]').forEach(c=>c.addEventListener('change',recalc));
