@@ -42,3 +42,5 @@ npx wrangler pages deploy chongshi-cloudflare-page --project-name chongshi-gap
 
 - 页面中的节能率、能效提升率等数值均为崇实科技官网公开披露口径，本页未做第三方验证。
 - 雷达图成熟度打分为基于公开资料的定性评估，用于识别能力缺口，不代表精确评分。
+
+- 2026-09-28: 拆分为两个 Pages 项目（roadmap / quotation），本仓库共用，构建时按项目裁剪。
