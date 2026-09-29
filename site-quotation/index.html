@@ -95,7 +95,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
     <div class="kpi"><div class="k">人力成本</div><div class="v">¥<span id="k-human">—</span></div><div class="n">已选人天 × 2,200</div></div>
     <div class="kpi"><div class="k">其他费用</div><div class="v">¥<span id="k-other">—</span></div><div class="n">工具、联调环境、实施保障等</div></div>
     <div class="kpi hl"><div class="k">总报价</div><div class="v"><span id="k-total-w">—</span> 万</div><div class="n">¥<span id="k-total">—</span></div></div>
-    <div class="kpi hl"><div class="k">预计交付周期</div><div class="v"><span id="k-weeks">—</span> 周</div><div class="n">2 名工程师 · 理论最短 <span id="k-weeks-min">—</span> 周</div></div>
+    <div class="kpi hl"><div class="k">预计交付周期</div><div class="v"><span id="k-weeks">—</span> 周</div><div class="n">2 名工程师全程投入</div></div>
   </div>
 
   <section>
@@ -105,7 +105,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
       <li><b>总报价</b> ＝ 人力成本 ＋ 其他费用（开发工具、联调环境、实施保障等）。</li>
       <li>依赖关系：<b>箱体图生成</b>需在 BOM 验收后启动；<b>机电图转智控图</b>与<b>智控图转点表</b>相互独立，可与箱体图任意组合。</li>
       <li>投入方式：2 名工程师全程在位；业务方需指定 1 名规则确认人，配合规则定义与验收。</li>
-      <li><b>交付周期</b>按 2 名工程师投入测算：理论最短 ＝ 总人天 ÷ 2 ÷ 5（每周按5工作日计算），随勾选实时更新。</li>
+      <li><b>交付周期</b>按 2 名工程师投入测算：总人天 ÷ 2 ÷ 5（每周按5工作日计算），随勾选实时更新。</li>
     </ul>
   </section>
 
@@ -121,27 +121,27 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
       <table class="master">
         <thead><tr><th class="c">选择</th><th class="c">分组</th><th class="c">模块</th><th>内容说明</th><th class="n">人天</th><th class="n">金额（元）</th></tr></thead>
         <tbody>
-          <tr class="req item" data-req="1" data-d="7.5"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>平台底座</b></td><td>项目管理、数据存储、权限隔离、内网部署，其余模块均运行在其上</td><td class="n">7.5</td><td class="amt">16,500</td></tr>
-          <tr class="req item" data-req="1" data-d="16.0"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>企业知识库构建</b></td><td>统一沉淀品牌参数、既有项目案例、施工经验与配置规则；品牌库数据包含其中，作为选型、比价与生成的统一知识来源</td><td class="n">16.0</td><td class="amt">35,200</td></tr>
-          <tr class="req item" data-req="1" data-d="30.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>点表标准化</b></td><td>客户点表（Excel/CSV）导入，自动转为崇实标准点表并逐项校验，是配置与 BOM 的统一输入</td><td class="n">30.0</td><td class="amt">66,000</td></tr>
-          <tr class="req item" data-req="1" data-d="18.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按约束条件生成</b></td><td>限定品牌、系列、参数等约束条件自动选型，支持多品牌比价，结果可控可追溯</td><td class="n">18.0</td><td class="amt">39,600</td></tr>
-          <tr class="req item" data-req="1" data-d="15.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按既有案例生成</b></td><td>复用以往项目的施工经验，直接推荐经过验证的成熟配置，少走弯路</td><td class="n">15.0</td><td class="amt">33,000</td></tr>
-          <tr class="req item" data-req="1" data-d="11.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按约束条件生成</b></td><td>按崇实必须品模板逐项生成主材清单，与配置约束严格一致</td><td class="n">11.0</td><td class="amt">24,200</td></tr>
-          <tr class="req item" data-req="1" data-d="9.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按既有案例生成</b></td><td>参考既有项目经验，补充选配施工 / 网关 / 传感器等辅材</td><td class="n">9.5</td><td class="amt">20,900</td></tr>
-          <tr class="req item" data-req="1" data-d="8.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>方案与报价输出</b></td><td>方案文档自动组装、报价单生成、系统图挂载</td><td class="n">8.5</td><td class="amt">18,700</td></tr>
-          <tr class="req item" data-req="1" data-d="16.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>测试与验收</b></td><td>用例设计、自动化回归、与业务方逐项对账，作为整体验收环节收尾</td><td class="n">16.0</td><td class="amt">35,200</td></tr>
-          <tr class="req item" data-req="1" data-d="4.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>培训与运维交接</b></td><td>知识库与规则库的日常维护培训、操作手册与运维交接，保障上线后可持续运转</td><td class="n">4.0</td><td class="amt">8,800</td></tr>
-          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">必选模块人力成本小计</td><td class="n" id="d-p0">135.5</td><td class="amt" id="h-p0">298,100</td></tr>
-          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-p0">37,788</td></tr>
-          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>P0 预算总计</b></td><td class="n" id="td-p0">135.5</td><td class="amt" id="tm-p0">335,888</td></tr>
-          <tr class="opt item ck" data-d="32.0" data-fee="500"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>机电图转智控图</b></td><td>识别机电图纸并转化为智控图；成套图输出已有工具完成，本模块补齐这一关键转化环节</td><td class="n">32.0</td><td class="amt">70,400</td></tr>
-          <tr class="opt item ck" data-d="20.0" data-fee="300"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>智控图转点表</b></td><td>覆盖甲方仅提供图纸、无点表的项目场景，由智控图直接生成崇实标准点表</td><td class="n">20.0</td><td class="amt">44,000</td></tr>
-          <tr class="opt item ck" data-d="34.0" data-fee="400"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>箱体图生成</b></td><td>自动排布模块、标注接线位置，输出双栏箱体图（需在 BOM 验收后启动）</td><td class="n">34.0</td><td class="amt">74,800</td></tr>
+          <tr class="req item" data-req="1" data-d="8.5"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>平台底座</b></td><td>项目管理、数据存储、权限隔离、内网部署，其余模块均运行在其上</td><td class="n">8.5</td><td class="amt">18,700</td></tr>
+          <tr class="req item" data-req="1" data-d="19.0"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>企业知识库构建</b></td><td>统一沉淀品牌参数、既有项目案例、施工经验与配置规则；品牌库数据包含其中，作为选型、比价与生成的统一知识来源</td><td class="n">19.0</td><td class="amt">41,800</td></tr>
+          <tr class="req item" data-req="1" data-d="35.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>点表标准化</b></td><td>客户点表（Excel/CSV）导入，自动转为崇实标准点表并逐项校验，是配置与 BOM 的统一输入</td><td class="n">35.0</td><td class="amt">77,000</td></tr>
+          <tr class="req item" data-req="1" data-d="20.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按约束条件生成</b></td><td>限定品牌、系列、参数等约束条件自动选型，支持多品牌比价，结果可控可追溯</td><td class="n">20.0</td><td class="amt">44,000</td></tr>
+          <tr class="req item" data-req="1" data-d="17.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按既有案例生成</b></td><td>复用以往项目的施工经验，直接推荐经过验证的成熟配置，少走弯路</td><td class="n">17.0</td><td class="amt">37,400</td></tr>
+          <tr class="req item" data-req="1" data-d="12.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按约束条件生成</b></td><td>按崇实必须品模板逐项生成主材清单，与配置约束严格一致</td><td class="n">12.5</td><td class="amt">27,500</td></tr>
+          <tr class="req item" data-req="1" data-d="11.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按既有案例生成</b></td><td>参考既有项目经验，补充选配施工 / 网关 / 传感器等辅材</td><td class="n">11.0</td><td class="amt">24,200</td></tr>
+          <tr class="req item" data-req="1" data-d="10.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>方案与报价输出</b></td><td>方案文档自动组装、报价单生成、系统图挂载</td><td class="n">10.0</td><td class="amt">22,000</td></tr>
+          <tr class="req item" data-req="1" data-d="18.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>测试与验收</b></td><td>用例设计、自动化回归、与业务方逐项对账，作为整体验收环节收尾</td><td class="n">18.5</td><td class="amt">40,700</td></tr>
+          <tr class="req item" data-req="1" data-d="5.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>培训与运维交接</b></td><td>知识库与规则库的日常维护培训、操作手册与运维交接，保障上线后可持续运转</td><td class="n">5.0</td><td class="amt">11,000</td></tr>
+          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">必选模块人力成本小计</td><td class="n" id="d-p0">156.5</td><td class="amt" id="h-p0">344,300</td></tr>
+          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-p0">43,332</td></tr>
+          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>P0 预算总计</b></td><td class="n" id="td-p0">156.5</td><td class="amt" id="tm-p0">387,632</td></tr>
+          <tr class="opt item ck" data-d="35.0" data-fee="500"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>机电图转智控图</b></td><td>识别机电图纸并转化为智控图；成套图输出已有工具完成，本模块补齐这一关键转化环节</td><td class="n">35.0</td><td class="amt">77,000</td></tr>
+          <tr class="opt item ck" data-d="21.5" data-fee="300"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>智控图转点表</b></td><td>覆盖甲方仅提供图纸、无点表的项目场景，由智控图直接生成崇实标准点表</td><td class="n">21.5</td><td class="amt">47,300</td></tr>
+          <tr class="opt item ck" data-d="37.0" data-fee="400"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>箱体图生成</b></td><td>自动排布模块、标注接线位置，输出双栏箱体图（需在 BOM 验收后启动）</td><td class="n">37.0</td><td class="amt">81,400</td></tr>
           <tr class="opt item na" data-d="7.0" data-fee="0"><td class="sel"><input type="checkbox" disabled></td><td class="grp">可选</td><td class="c"><b>能效分析</b><span class="na-tag">暂缓</span></td><td>暂缺必要的能耗数据与评估标准，待标准明确后另行评估</td><td class="n">—</td><td class="amt">—</td></tr>
-          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">可选模块人力成本小计</td><td class="n" id="d-opt">86.0</td><td class="amt" id="h-opt">189,200</td></tr>
-          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-opt">24,048</td></tr>
-          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>可选模块总计</b></td><td class="n" id="td-opt">86.0</td><td class="amt" id="tm-opt">213,248</td></tr>
-          <tr class="grand"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">所有预算总计（已勾选部分）</td><td class="n" id="d-g">221.5</td><td class="amt" id="m-g">549,136</td></tr>
+          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">可选模块人力成本小计</td><td class="n" id="d-opt">93.5</td><td class="amt" id="h-opt">205,700</td></tr>
+          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-opt">26,028</td></tr>
+          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>可选模块总计</b></td><td class="n" id="td-opt">93.5</td><td class="amt" id="tm-opt">231,728</td></tr>
+          <tr class="grand"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">所有预算总计（已勾选部分）</td><td class="n" id="d-g">250.0</td><td class="amt" id="m-g">619,360</td></tr>
         </tbody>
       </table>
     </div>
@@ -192,8 +192,7 @@ function recalc(){
   document.getElementById('k-total').textContent=f(Math.round(t0+t1));
   document.getElementById('k-total-w').textContent=((t0+t1)/10000).toFixed(1);
   const wks=(d0+d1)/(2*5);
-  document.getElementById('k-weeks').textContent=Math.ceil(wks*1.15);
-  document.getElementById('k-weeks-min').textContent=wks.toFixed(1);
+  document.getElementById('k-weeks').textContent=Math.ceil(wks);
 }
 document.querySelectorAll('input[type=checkbox]').forEach(c=>c.addEventListener('change',recalc));
 document.querySelectorAll('tr.item.ck').forEach(tr=>{
