@@ -57,6 +57,15 @@ export default {
     const expected = 'gate=' + (await gateToken(env));
     const cookies = request.headers.get('Cookie') || '';
 
+    // 报价单已迁移至独立站点（chongshi-quotation.pages.dev），旧路径一律撤除；
+    // 同时阻断旧部署可能遗留的边缘缓存条目（Worker 先于缓存执行，命中此分支即不再触达缓存）。
+    if (url.pathname === '/quotation' || url.pathname === '/quotation.html') {
+      return new Response('404 Not Found: 该页面已迁移至独立站点。', {
+        status: 404,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }
+      });
+    }
+
     // 已通过验证：正常返回静态资源
     if (cookies.includes(expected)) {
       let resp = await env.ASSETS.fetch(request);
