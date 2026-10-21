@@ -49,6 +49,7 @@ td.amt,th.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:now
 .master tbody tr.pto td{background:#dbe7fb !important;font-weight:700;border-color:#a9c6f7;font-size:14.2px}
 .master tbody tr.fee td{background:#f8fafc !important;color:#475569}
 .master tbody tr.grand td{background:#0f2d5c !important;color:#fff;font-weight:700;font-size:15px;border-color:#0f2d5c}
+.master tbody tr.tax td{background:#b91c1c !important;color:#fff;font-weight:700;font-size:14.6px;border-color:#b91c1c}
 .master thead th{position:sticky;top:0;z-index:2;box-shadow:0 1px 0 var(--line)}
 .master tbody tr.item.ck{cursor:pointer}
 .master tbody tr.item.ck:hover td{background:#fff8e1 !important}
@@ -92,9 +93,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
 
   <div class="kpis">
     <div class="kpi"><div class="k">已选模块人天</div><div class="v"><span id="k-days">—</span> 人天</div><div class="n">基础模块 ＋ 已勾选模块</div></div>
-    <div class="kpi"><div class="k">人力成本</div><div class="v">¥<span id="k-human">—</span></div><div class="n">已选人天 × 2,200</div></div>
-    <div class="kpi"><div class="k">其他费用</div><div class="v">¥<span id="k-other">—</span></div><div class="n">工具、联调环境、实施保障等</div></div>
-    <div class="kpi hl"><div class="k">总报价</div><div class="v"><span id="k-total-w">—</span> 万</div><div class="n">¥<span id="k-total">—</span></div></div>
+    <div class="kpi hl"><div class="k">总报价（含税）</div><div class="v"><span id="k-total-w">—</span> 万</div><div class="n">¥<span id="k-total">—</span> · 含 13% 增值税</div></div>
     <div class="kpi hl"><div class="k">预计交付周期</div><div class="v"><span id="k-weeks">—</span> 周</div><div class="n">2 名工程师全程投入</div></div>
   </div>
 
@@ -103,6 +102,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
     <ul>
       <li><b>统一人天单价 2,200 元/人天</b>，所有金额 ＝ 人天 × 2,200，逐行可验算。</li>
       <li><b>总报价</b> ＝ 人力成本 ＋ 其他费用（开发工具、联调环境、实施保障等）。</li>
+      <li>本表金额为<b>不含税</b>价；增值税按 <b>13%</b> 计，含税总价 ＝ 不含税总价 × 1.13，见表格底部。</li>
       <li>依赖关系：<b>箱体图生成</b>需在 BOM 验收后启动；<b>机电图转智控图</b>与<b>智控图转点表</b>相互独立，可与箱体图任意组合。</li>
       <li>投入方式：2 名工程师全程在位；业务方需指定 1 名规则确认人，配合规则定义与验收。</li>
       <li><b>交付周期</b>按 2 名工程师投入测算：总人天 ÷ 2 ÷ 5（每周按5工作日计算），随勾选实时更新。</li>
@@ -123,7 +123,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
         <tbody>
           <tr class="req item" data-req="1" data-d="8.5"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>平台底座</b></td><td>项目管理、数据存储、权限隔离、内网部署，其余模块均运行在其上</td><td class="n">8.5</td><td class="amt">18,700</td></tr>
           <tr class="req item" data-req="1" data-d="19.0"><td class="sel"><span class="lock">必</span></td><td class="grp">基础</td><td class="c"><b>企业知识库构建</b></td><td>统一沉淀品牌参数、既有项目案例、施工经验与配置规则；品牌库数据包含其中，作为选型、比价与生成的统一知识来源</td><td class="n">19.0</td><td class="amt">41,800</td></tr>
-          <tr class="req item" data-req="1" data-d="35.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>点表标准化</b></td><td>客户点表（Excel/CSV）导入，自动转为崇实标准点表并逐项校验，是配置与 BOM 的统一输入</td><td class="n">35.0</td><td class="amt">77,000</td></tr>
+          <tr class="req item" data-req="1" data-d="33.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>点表标准化</b></td><td>客户点表（Excel/CSV）导入，自动转为崇实标准点表并逐项校验，是配置与 BOM 的统一输入</td><td class="n">33.0</td><td class="amt">72,600</td></tr>
           <tr class="req item" data-req="1" data-d="20.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按约束条件生成</b></td><td>限定品牌、系列、参数等约束条件自动选型，支持多品牌比价，结果可控可追溯</td><td class="n">20.0</td><td class="amt">44,000</td></tr>
           <tr class="req item" data-req="1" data-d="17.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>模块化配置 · 按既有案例生成</b></td><td>复用以往项目的施工经验，直接推荐经过验证的成熟配置，少走弯路</td><td class="n">17.0</td><td class="amt">37,400</td></tr>
           <tr class="req item" data-req="1" data-d="12.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>BOM 清单 · 按约束条件生成</b></td><td>按崇实必须品模板逐项生成主材清单，与配置约束严格一致</td><td class="n">12.5</td><td class="amt">27,500</td></tr>
@@ -131,9 +131,9 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
           <tr class="req item" data-req="1" data-d="10.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>方案与报价输出</b></td><td>方案文档自动组装、报价单生成、系统图挂载</td><td class="n">10.0</td><td class="amt">22,000</td></tr>
           <tr class="req item" data-req="1" data-d="18.5"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>测试与验收</b></td><td>用例设计、自动化回归、与业务方逐项对账，作为整体验收环节收尾</td><td class="n">18.5</td><td class="amt">40,700</td></tr>
           <tr class="req item" data-req="1" data-d="5.0"><td class="sel"><span class="lock">必</span></td><td class="grp">功能</td><td class="c"><b>培训与运维交接</b></td><td>知识库与规则库的日常维护培训、操作手册与运维交接，保障上线后可持续运转</td><td class="n">5.0</td><td class="amt">11,000</td></tr>
-          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">必选模块人力成本小计</td><td class="n" id="d-p0">156.5</td><td class="amt" id="h-p0">344,300</td></tr>
-          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-p0">43,332</td></tr>
-          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>P0 预算总计</b></td><td class="n" id="td-p0">156.5</td><td class="amt" id="tm-p0">387,632</td></tr>
+          <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">必选模块人力成本小计</td><td class="n" id="d-p0">154.5</td><td class="amt" id="h-p0">339,900</td></tr>
+          <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-p0">42,804</td></tr>
+          <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>P0 预算总计</b></td><td class="n" id="td-p0">154.5</td><td class="amt" id="tm-p0">382,704</td></tr>
           <tr class="opt item ck" data-d="35.0" data-fee="500"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>机电图转智控图</b></td><td>识别机电图纸并转化为智控图；成套图输出已有工具完成，本模块补齐这一关键转化环节</td><td class="n">35.0</td><td class="amt">77,000</td></tr>
           <tr class="opt item ck" data-d="21.5" data-fee="300"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>智控图转点表</b></td><td>覆盖甲方仅提供图纸、无点表的项目场景，由智控图直接生成崇实标准点表</td><td class="n">21.5</td><td class="amt">47,300</td></tr>
           <tr class="opt item ck" data-d="37.0" data-fee="400"><td class="sel"><input type="checkbox" checked></td><td class="grp">可选</td><td class="c"><b>箱体图生成</b></td><td>自动排布模块、标注接线位置，输出双栏箱体图（需在 BOM 验收后启动）</td><td class="n">37.0</td><td class="amt">81,400</td></tr>
@@ -141,7 +141,8 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
           <tr class="sub"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">可选模块人力成本小计</td><td class="n" id="d-opt">93.5</td><td class="amt" id="h-opt">205,700</td></tr>
           <tr class="fee"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">其他费用（工具、联调环境、实施保障等）</td><td class="n">—</td><td class="amt" id="o-opt">26,028</td></tr>
           <tr class="pto"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2"><b>可选模块总计</b></td><td class="n" id="td-opt">93.5</td><td class="amt" id="tm-opt">231,728</td></tr>
-          <tr class="grand"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">所有预算总计（已勾选部分）</td><td class="n" id="d-g">250.0</td><td class="amt" id="m-g">619,360</td></tr>
+          <tr class="grand"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">所有预算总计（已勾选部分）</td><td class="n" id="d-g">248.0</td><td class="amt" id="m-g">614,432</td></tr>
+          <tr class="tax"><td class="sel"></td><td class="grp"></td><td class="c" colspan="2">含税总价（增值税 13%）</td><td class="n">—</td><td class="amt" id="m-tax">694,308</td></tr>
         </tbody>
       </table>
     </div>
@@ -151,15 +152,58 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
     </div>
   </section>
 
+  <section>
+    <h2><span class="num">3</span>AI 落地前后 · 企业投入人力对比</h2>
+    <p>下表为<b>单个常规项目</b>在核心环节上的人工投入对照：<b>现状</b>为当前人工完成各环节的实测耗时，<b>AI 落地后</b>按保留 20%–30% 人工审核估算。工时统一按 1 人天 = 8 小时计算。</p>
+    <div class="tw">
+      <table class="master">
+        <thead><tr><th class="c">环节</th><th>说明</th><th class="n">现状（h）</th><th class="n">AI 落地后（h）</th><th class="n">节省（h）</th></tr></thead>
+        <tbody>
+          <tr><td class="c">点表标准化</td><td>市面不规则点表 → 崇实标准点表</td><td class="n">0.5–1</td><td class="n">≈0.2</td><td class="n">0.3–0.8</td></tr>
+          <tr><td class="c">标准点表 → 成套图</td><td>模块与点名（已有功能）、柜体布局图</td><td class="n">0.5–1.5</td><td class="n">≈0.25</td><td class="n">0.25–1.25</td></tr>
+          <tr><td class="c">点表出模块配置</td><td>在点表 / 标准点表上出模块配置</td><td class="n">1–2</td><td class="n">≈0.4</td><td class="n">0.6–1.6</td></tr>
+          <tr><td class="c">模块配置出 BOM 单</td><td>按配置生成传感器、网关、软件等清单</td><td class="n">0.5–1</td><td class="n">≈0.2</td><td class="n">0.3–0.8</td></tr>
+          <tr><td class="c">BA 图纸设计</td><td>20–30 个项目约 1 个需出图（单项目摊薄）；含平面图、原理图、系统图、点表</td><td class="n">0.5–0.8</td><td class="n">≈0.1–0.2</td><td class="n">0.3–0.6</td></tr>
+          <tr class="sub"><td class="c" colspan="2">核心环节小计</td><td class="n">3.0–6.3</td><td class="n">≈1.2–1.3</td><td class="n">1.7–5.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blk note">
+      <span class="lbl">结论</span>
+      <p>核心环节的人工投入由约 <b>3.0–6.3 小时（0.4–0.8 人天）降至约 1.2–1.3 小时（0.2 人天）</b>，单个常规项目节省约 <b>1.7–5.1 小时</b>。其中 <b>BA 图纸设计</b>按「20–30 个项目约 1 个需出图」的比例摊薄计入（单个出图项目实测约 16 小时）。工时为依据实测的经验估算，正式采用前建议以 1 个真实项目校准。</p>
+    </div>
+    <div class="blk note">
+      <span class="lbl">为什么能减少这么多</span>
+      <p>点表标准化、成套图、模块配置、BOM 这四个环节有一个共同点：<b>规则密集、结果有标准模板、输入输出高度结构化</b>，本身不依赖创造性判断。</p>
+      <p>① <b>点表标准化</b>——客户点表字段叫法各异，但「客户的叫法 → 标准字段」这层对应关系是有限的，做过几个项目就收敛了，可由知识库自动映射；② <b>成套图与 BOM</b>——模块、点名、柜体布局、传感器/网关/软件清单都遵循既有模板与配置规则，系统可按「约束条件 + 既有案例」直接生成；③ <b>模块配置</b>——选型依据品牌、系列、参数等明确约束，属「查表 + 匹配」，正是机器最擅长的部分。人工剩下的工作从「从头做」变成「审一遍、点确认」，因此耗时按 20%–30% 保留。</p>
+      <p><b>BA 图纸设计</b>相对特殊：它并非每个项目都发生（约 20–30 个项目才有一个），且涉及空间排布与现场条件，不能像前三项那样全自动。但其中的平面图、原理图、系统图、点表都遵循既有绘图规范，可由知识库预生成初稿，人做深化与确认，因此同样按 20%–30% 保留后摊薄计入。</p>
+    </div>
+    <div class="tw">
+      <table class="master">
+        <thead><tr><th class="c">周期</th><th class="c">项目数</th><th class="n">累计节省（h）</th><th class="n">累计节省（人天）</th></tr></thead>
+        <tbody>
+          <tr><td class="c">单项目</td><td class="c">1</td><td class="n">1.7–5.1</td><td class="n">0.2–0.6</td></tr>
+          <tr class="sub"><td class="c">月（按 3 个项目）</td><td class="c">3</td><td class="n">5.1–15.3</td><td class="n">0.6–1.9</td></tr>
+          <tr class="sub"><td class="c">季（按 9 个项目）</td><td class="c">9</td><td class="n">15.3–45.9</td><td class="n">1.9–5.7</td></tr>
+          <tr class="sub"><td class="c">年（按 36 个项目）</td><td class="c">36</td><td class="n">61.2–183.6</td><td class="n">7.6–22.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blk note">
+      <span class="lbl">规模解读</span>
+      <p>单项目节省看似不大（约 0.2–0.6 人天），但它是<b>固定环节的确定性节省</b>：项目越多、越成规模，累计越可观。以每月 3 个项目计，一个月累计节省约 <b>0.6–1.9 人天</b>；一年（36 个项目）可达 <b>7.6–22.9 人天</b>。更重要的是，省下的是每个项目都要重复一遍的<b>机械性工作</b>，这些时间可整体转向图纸深化、现场对接、客户沟通等高价值环节。</p>
+    </div>
+  </section>
+
   <footer>
-    智控方案自动化 · 报价单 · 编制日期 2026-09-24<br>
-    统一单价 2,200 元/人天 · 金额 ＝ 人天 × 2,200 · 勾选模块后总计实时更新
+    智控方案自动化 · 报价单 · 编制日期 2026-10-20<br>
+    统一单价 2,200 元/人天 · 金额 ＝ 人天 × 2,200 · 不含税 · 含税总价 ＝ 不含税 × 1.13 · 勾选模块后总计实时更新
   </footer>
 
 </div>
 
 <script>
-const RATE=2200, MARGIN=0.12, FEE0=1800;
+const RATE=2200, MARGIN=0.12, FEE0=1800, TAX=0.13;
 const f=n=>n.toLocaleString('en-US');
 function recalc(){
   let d0=0,h0=0;
@@ -186,11 +230,10 @@ function recalc(){
   document.getElementById('tm-opt').textContent=f(Math.round(t1));
   document.getElementById('d-g').textContent=(d0+d1).toFixed(1);
   document.getElementById('m-g').textContent=f(Math.round(t0+t1));
+  document.getElementById('m-tax').textContent=f(Math.round((t0+t1)*(1+TAX)));
   document.getElementById('k-days').textContent=(d0+d1).toFixed(1).replace(/\.0$/,'');
-  document.getElementById('k-human').textContent=f(Math.round(h0+h1));
-  document.getElementById('k-other').textContent=f(Math.round(o0+o1));
-  document.getElementById('k-total').textContent=f(Math.round(t0+t1));
-  document.getElementById('k-total-w').textContent=((t0+t1)/10000).toFixed(1);
+  document.getElementById('k-total').textContent=f(Math.round((t0+t1)*(1+TAX)));
+  document.getElementById('k-total-w').textContent=(((t0+t1)*(1+TAX))/10000).toFixed(1);
   const wks=(d0+d1)/(2*5);
   document.getElementById('k-weeks').textContent=Math.ceil(wks);
 }
