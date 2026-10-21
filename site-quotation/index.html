@@ -69,18 +69,6 @@ input[type=checkbox]:disabled{cursor:not-allowed}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
 @media print{body{background:#fff}section{break-inside:avoid;box-shadow:none}
 .hero{background:#0f2d5c !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:15px 0}
-@media(max-width:860px){.chart-row{grid-template-columns:1fr}}
-.chart-card{border:1px solid var(--line);border-radius:12px;padding:14px 16px 6px;background:#fff}
-.chart-card h4{margin:0 0 3px;font-size:14.5px;color:#0f2d5c}
-.chart-card .cap{font-size:12px;color:var(--muted);margin-bottom:6px}
-.chart-card svg{width:100%;height:auto;display:block}
-.kpi2{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:14px 0 4px}
-@media(max-width:860px){.kpi2{grid-template-columns:repeat(2,1fr)}}
-.kpi2 .b{background:#f8fbff;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
-.kpi2 .b .k{font-size:11.8px;color:var(--muted)}
-.kpi2 .b .v{font-size:19px;font-weight:700;color:#0f2d5c;margin-top:2px;font-variant-numeric:tabular-nums}
-.kpi2 .b .n{font-size:11.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -162,88 +150,11 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
       <span class="lbl">说明</span>
       <p><b>企业知识库</b>统一沉淀品牌、案例与规则，是配置与 BOM 两类生成路径的共同数据底座。<b>机电图转智控图</b>解决「从机电图到智控图」的转化缺口；<b>智控图转点表</b>覆盖无点表项目中可直接提供智控图的部分，两条路径相互独立。<b>箱体图生成</b>属于生产落地环节，与图纸类模块可任意组合。<b>能效分析</b>待能耗数据与评估标准明确后另行评估。</p>
     </div>
+  </section>
 
-    <h3 style="margin:22px 0 6px;font-size:17px;color:#0f2d5c;border-top:1px dashed var(--line);padding-top:18px">AI 落地前后 · 人力差异与效益</h3>
-    <p>围绕老板最关心的四件事——<b>能省多少钱、能增加多少效益、出图质量提升多少、什么时候回本</b>。以下测算统一按<b>中间值</b>（区间取中点，明细见文末佐证表）取值，工时按 1 人天 = 8 小时计。</p>
-
-    <div class="kpi2">
-      <div class="b"><div class="k">核心环节提效</div><div class="v">约 75%</div><div class="n">单项目 4.65h → 1.25h</div></div>
-      <div class="b"><div class="k">单项目节省</div><div class="v">3.4 小时</div><div class="n">机械性环节的确定性节省</div></div>
-      <div class="b"><div class="k">年度商机提升</div><div class="v">约 3.7 倍</div><div class="n">3 人团队多承接 3,510 项目/年</div></div>
-      <div class="b"><div class="k">回本周期</div><div class="v">约 1.6 年</div><div class="n">之后每年净省约 44 万元</div></div>
-    </div>
-
-    <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">① 能省多少钱 —— 核心环节提效 75%</h3>
-    <p>单个常规项目在核心环节上，人工投入由现状 <b>4.65 小时</b> 降至 AI 落地后的 <b>1.25 小时</b>，节省 <b>3.4 小时/项目</b>，<b>提效约 75%</b>（即核心设计环节的人力投入可节约约 3/4）。</p>
-    <div class="chart-row">
-      <div class="chart-card">
-        <h4>单项目核心环节耗时（小时）</h4>
-        <div class="cap">现状 4.65h → AI 后 1.25h，节省 3.4h</div>
-        <svg viewBox="0 0 640 250" role="img" aria-label="单项目核心环节耗时对比柱状图">
-          <line x1="46" y1="20" x2="46" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <line x1="46" y1="204" x2="624" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <g font-size="11" fill="#94a3b8" text-anchor="end">
-            <text x="40" y="208">0</text><text x="40" y="171.2">1</text><text x="40" y="134.4">2</text><text x="40" y="97.6">3</text><text x="40" y="60.8">4</text><text x="40" y="24">5</text>
-          </g>
-          <g stroke="#eef2f7" stroke-width="1">
-            <line x1="46" y1="167.2" x2="624" y2="167.2"/><line x1="46" y1="130.4" x2="624" y2="130.4"/><line x1="46" y1="93.6" x2="624" y2="93.6"/><line x1="46" y1="56.8" x2="624" y2="56.8"/><line x1="46" y1="20" x2="624" y2="20"/>
-          </g>
-          <rect x="160" y="32.9" width="96" height="171.1" rx="6" fill="#94a3b8"/>
-          <rect x="414" y="158" width="96" height="46" rx="6" fill="#2563eb"/>
-          <text x="208" y="25" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">4.65h</text>
-          <text x="462" y="150" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">1.25h</text>
-          <text x="208" y="224" font-size="12.5" fill="#334155" text-anchor="middle">现状</text>
-          <text x="462" y="224" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="middle">AI 落地后</text>
-          <g>
-            <rect x="290" y="70" width="120" height="26" rx="13" fill="#16a34a"/>
-            <text x="350" y="87" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">省 3.4h · 75%</text>
-          </g>
-        </svg>
-      </div>
-      <div class="chart-card">
-        <h4>3 人团队年可承接项目数（个）</h4>
-        <div class="cap">现状 1,290 → AI 后 4,800，多接 3,510</div>
-        <svg viewBox="0 0 640 250" role="img" aria-label="3人团队年可承接项目数对比柱状图">
-          <line x1="46" y1="20" x2="46" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <line x1="46" y1="204" x2="624" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <g font-size="11" fill="#94a3b8" text-anchor="end">
-            <text x="40" y="208">0</text><text x="40" y="171.2">1k</text><text x="40" y="134.4">2k</text><text x="40" y="97.6">3k</text><text x="40" y="60.8">4k</text><text x="40" y="24">5k</text>
-          </g>
-          <g stroke="#eef2f7" stroke-width="1">
-            <line x1="46" y1="167.2" x2="624" y2="167.2"/><line x1="46" y1="130.4" x2="624" y2="130.4"/><line x1="46" y1="93.6" x2="624" y2="93.6"/><line x1="46" y1="56.8" x2="624" y2="56.8"/><line x1="46" y1="20" x2="624" y2="20"/>
-          </g>
-          <rect x="160" y="156.5" width="96" height="47.5" rx="6" fill="#94a3b8"/>
-          <rect x="414" y="27.4" width="96" height="176.6" rx="6" fill="#2563eb"/>
-          <text x="208" y="148" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">1,290</text>
-          <text x="462" y="20" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">4,800</text>
-          <text x="208" y="224" font-size="12.5" fill="#334155" text-anchor="middle">现状</text>
-          <text x="462" y="224" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="middle">AI 落地后</text>
-          <g>
-            <rect x="290" y="88" width="136" height="26" rx="13" fill="#16a34a"/>
-            <text x="358" y="105" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">多接 3,510 · 3.7×</text>
-          </g>
-        </svg>
-      </div>
-    </div>
-
-    <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">② 能增加多少效益 —— 年度商机提升约 3.7 倍</h3>
-    <p>按 <b>3 人团队</b>测算（每人每年 250 个工作日、每日 8 小时，年可用工时 6,000 小时）：人员不变、顺利接单的情况下，现状满负荷约承接 <b>1,290 个项目/年</b>；AI 落地后同样时间可承接 <b>4,800 个项目/年</b>，<b>多承接约 3,510 个项目/年，商机提升约 3.7 倍</b>。省下的机械性时间可整体转向图纸深化、现场对接、客户沟通等高价值环节，直接转化为更多可交付的项目量。</p>
-
-    <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">③ 什么时候回本 —— 约 1.6 年，之后每年都是纯赚</h3>
-    <p>以该业务<b>每人年薪 20 万元</b>、年工作 2,000 小时折算，时薪约 <b>100 元/小时</b>。3 人团队承接同等项目量时，AI 一年节省工时约 <b>4,386 小时</b>，折算为年度价值约 <b>43.9 万元/年</b>。以本方案含税投入约 <b>69.4 万元</b>计，<b>约 1.6 年即可回本</b>；此后每年省下的约 44 万元即为净收益，规模越大、项目越多，年化收益越高。</p>
-
-    <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">④ 出图质量与品牌 —— 从「靠人」到「靠体系」</h3>
-    <ul>
-      <li><b>不依赖老师傅</b>：标准化流程与知识库驱动，新人上手快，出图质量不再取决于个别熟手的状态。</li>
-      <li><b>投标响应快</b>：点表、配置、BOM 自动生成，报价与方案当天可出，抢占投标窗口。</li>
-      <li><b>BOM 自动出、减少错配返工</b>：配置与清单严格一致，从源头降低漏配、错配导致的返工与现场扯皮。</li>
-      <li><b>经验沉淀为公司资产</b>：品牌参数、案例、施工规则统一入库，避免人员流动带走经验、导致出图质量波动，保障品牌一致性。</li>
-    </ul>
-
-    <div class="blk note">
-      <span class="lbl">测算依据 · 佐证表（区间取中点）</span>
-      <p>上文的「现状 4.65h、AI 后 1.25h、节省 3.4h、提效 75%」均为下表区间值的中位数。下表为单个常规项目在核心环节上的实测区间，<b>现状</b>为当前人工耗时，<b>AI 落地后</b>按保留 20%–30% 人工审核估算。</p>
-    </div>
+  <section>
+    <h2><span class="num">3</span>AI 落地前后 · 企业投入人力对比</h2>
+    <p>下表为<b>单个常规项目</b>在核心环节上的人工投入对照：<b>现状</b>为当前人工完成各环节的实测耗时，<b>AI 落地后</b>按保留 20%–30% 人工审核估算。工时统一按 1 人天 = 8 小时计算。</p>
     <div class="tw">
       <table class="master">
         <thead><tr><th class="c">环节</th><th>说明</th><th class="n">现状（h）</th><th class="n">AI 落地后（h）</th><th class="n">节省（h）</th></tr></thead>
@@ -253,14 +164,41 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
           <tr><td class="c">点表出模块配置</td><td>在点表 / 标准点表上出模块配置</td><td class="n">1–2</td><td class="n">≈0.4</td><td class="n">0.6–1.6</td></tr>
           <tr><td class="c">模块配置出 BOM 单</td><td>按配置生成传感器、网关、软件等清单</td><td class="n">0.5–1</td><td class="n">≈0.2</td><td class="n">0.3–0.8</td></tr>
           <tr><td class="c">BA 图纸设计</td><td>20–30 个项目约 1 个需出图（单项目摊薄）；含平面图、原理图、系统图、点表</td><td class="n">0.5–0.8</td><td class="n">≈0.1–0.2</td><td class="n">0.3–0.6</td></tr>
-          <tr class="sub"><td class="c" colspan="2">核心环节小计（区间）</td><td class="n">3.0–6.3</td><td class="n">≈1.2–1.3</td><td class="n">1.7–5.1</td></tr>
-          <tr class="pto"><td class="c" colspan="2">测算取值（中间值）</td><td class="n">4.65</td><td class="n">1.25</td><td class="n">3.4</td></tr>
+          <tr class="sub"><td class="c" colspan="2">核心环节小计</td><td class="n">3.0–6.3</td><td class="n">≈1.2–1.3</td><td class="n">1.7–5.1</td></tr>
         </tbody>
       </table>
     </div>
     <div class="blk note">
-      <span class="lbl">测算说明</span>
-      <p>工时为依据实测的经验估算，正式采用前建议以 1 个真实项目校准。时薪按「年薪 20 万 ÷ 2,000 小时」折算，仅用于测算回本周期，不代表实际薪酬结构；回本周期 = 方案含税投入 ÷ 年度节省价值。</p>
+      <span class="lbl">结论</span>
+      <p>核心环节的人工投入由约 <b>3.0–6.3 小时（0.4–0.8 人天）降至约 1.2–1.3 小时（0.2 人天）</b>，单个常规项目节省约 <b>1.7–5.1 小时</b>。其中 <b>BA 图纸设计</b>按「20–30 个项目约 1 个需出图」的比例摊薄计入（单个出图项目实测约 16 小时）。工时为依据实测的经验估算，正式采用前建议以 1 个真实项目校准。</p>
+    </div>
+    <div class="blk note">
+      <span class="lbl">为什么能减少这么多</span>
+      <p>点表标准化、成套图、模块配置、BOM 这四个环节有一个共同点：<b>规则密集、结果有标准模板、输入输出高度结构化</b>，本身不依赖创造性判断。</p>
+      <p>① <b>点表标准化</b>——客户点表字段叫法各异，但「客户的叫法 → 标准字段」这层对应关系是有限的，做过几个项目就收敛了，可由知识库自动映射；② <b>成套图与 BOM</b>——模块、点名、柜体布局、传感器/网关/软件清单都遵循既有模板与配置规则，系统可按「约束条件 + 既有案例」直接生成；③ <b>模块配置</b>——选型依据品牌、系列、参数等明确约束，属「查表 + 匹配」，正是机器最擅长的部分。人工剩下的工作从「从头做」变成「审一遍、点确认」，因此耗时按 20%–30% 保留。</p>
+      <p><b>BA 图纸设计</b>相对特殊：它并非每个项目都发生（约 20–30 个项目才有一个），且涉及空间排布与现场条件，不能像前三项那样全自动。但其中的平面图、原理图、系统图、点表都遵循既有绘图规范，可由知识库预生成初稿，人做深化与确认，因此同样按 20%–30% 保留后摊薄计入。</p>
+    </div>
+    <div class="tw">
+      <table class="master">
+        <thead><tr><th class="c">周期</th><th class="c">项目数</th><th class="n">累计节省（h）</th><th class="n">累计节省（人天）</th></tr></thead>
+        <tbody>
+          <tr><td class="c">单项目</td><td class="c">1</td><td class="n">1.7–5.1</td><td class="n">0.2–0.6</td></tr>
+          <tr class="sub"><td class="c">月（按 75 个项目）</td><td class="c">75</td><td class="n">127.5–382.5</td><td class="n">15.9–47.8</td></tr>
+          <tr class="sub"><td class="c">季（按 225 个项目）</td><td class="c">225</td><td class="n">382.5–1,147.5</td><td class="n">47.8–143.4</td></tr>
+          <tr class="sub"><td class="c">年（按 900 个项目）</td><td class="c">900</td><td class="n">1,530–4,590</td><td class="n">191.2–573.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="blk note">
+      <span class="lbl">规模解读</span>
+      <p>单项目节省看似不大（约 0.2–0.6 人天），但它是<b>固定环节的确定性节省</b>：项目越多、越成规模，累计越可观。以每月 75 个项目（约 50 个新项目 ＋ 25 个二次调整，两者工作量等同、合并计）计，一个月累计节省约 <b>15.9–47.8 人天</b>；一年（900 个项目）可达 <b>191–574 人天</b>。更重要的是，省下的是每个项目都要重复一遍的<b>机械性工作</b>，这些时间可整体转向图纸深化、现场对接、客户沟通等高价值环节。</p>
+    </div>
+    <div class="blk note">
+      <span class="lbl">等效折算</span>
+      <p>一年节省的 <b>191–574 人天</b>，换算成更直观的方式——按每人每年约 250 个正常上班日（全年约 365 天扣除周末、法定节假日与年假）折算：</p>
+      <p>① <b>约等于 0.8–2.3 名员工一年的正常上班天数</b>——即这些机械性核对工作，累积起来相当于不到 1 人到 2 人多一点的员工全年满负荷工作才能完成；</p>
+      <p>② 换算到月，约等于 <b>每月 0.8–2.3 名员工的满勤工作量</b>（全年分摊）。</p>
+      <p>需要说明：这一工作量是分散在全年数百个项目里的碎片化时间累积而成，是否真能"省出整名员工"取决于项目是否足够集中——若项目分散在多人手中，则体现为<b>每人手上多出来的可用时间</b>，而非直接减少编制；此处"0.8–2.3 人"是<b>等效工作量</b>的换算，仅用于理解规模，不代表薪酬成本。</p>
     </div>
   </section>
 
