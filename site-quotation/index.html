@@ -180,55 +180,92 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
 
     <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">② 产能释放 —— 等效约 5 人，投向接单与高价值环节</h3>
     <p>年释放的约 <b>10,125 小时</b>，等效于约 <b>5 人年</b>的产能（非裁员）。这部分力量可整体转向<b>接单拓展、图纸深化、现场对接、客户沟通</b>等高价值环节，在不增编的前提下直接转化为更多可交付项目与商机——团队规模或项目量越大，可承接的增量越明显。</p>
-    <div class="chart-row">
-      <div class="chart-card">
-        <h4>年人力成本（万元）</h4>
-        <div class="cap">现状 86.4 万 → 流程压缩后 37.8 万，释放 48.6 万产能</div>
-        <svg viewBox="0 0 640 250" role="img" aria-label="年人力成本对比柱状图">
-          <line x1="46" y1="20" x2="46" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <line x1="46" y1="204" x2="624" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <g font-size="11" fill="#94a3b8" text-anchor="end">
-            <text x="40" y="208">0</text><text x="40" y="171.2">20</text><text x="40" y="134.4">40</text><text x="40" y="97.6">60</text><text x="40" y="60.8">80</text><text x="40" y="24">100</text>
-          </g>
-          <g stroke="#eef2f7" stroke-width="1">
-            <line x1="46" y1="167.2" x2="624" y2="167.2"/><line x1="46" y1="130.4" x2="624" y2="130.4"/><line x1="46" y1="93.6" x2="624" y2="93.6"/><line x1="46" y1="56.8" x2="624" y2="56.8"/><line x1="46" y1="20" x2="624" y2="20"/>
-          </g>
-          <rect x="160" y="45" width="96" height="159" rx="6" fill="#94a3b8"/>
-          <rect x="414" y="134.4" width="96" height="69.6" rx="6" fill="#2563eb"/>
-          <text x="208" y="37" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">86.4 万</text>
-          <text x="462" y="126" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">37.8 万</text>
-          <text x="208" y="224" font-size="12.5" fill="#334155" text-anchor="middle">现状</text>
-          <text x="462" y="224" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="middle">流程压缩后</text>
-          <g>
-            <rect x="290" y="84" width="140" height="26" rx="13" fill="#16a34a"/>
-            <text x="360" y="101" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">释放 48.6 万产能</text>
-          </g>
-        </svg>
-      </div>
-      <div class="chart-card">
-        <h4>单项目核心环节工时（中值，小时）</h4>
-        <div class="cap">现状人工 vs 平台落地后，合计 4.65h → 1.25h</div>
-        <svg viewBox="0 0 640 250" role="img" aria-label="单项目核心环节工时对比柱状图">
-          <line x1="46" y1="20" x2="46" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <line x1="46" y1="204" x2="624" y2="204" stroke="#cbd5e1" stroke-width="1"/>
-          <g font-size="11" fill="#94a3b8" text-anchor="end">
-            <text x="40" y="208">0</text><text x="40" y="171.2">1</text><text x="40" y="134.4">2</text><text x="40" y="97.6">3</text><text x="40" y="60.8">4</text><text x="40" y="24">5</text>
-          </g>
-          <g stroke="#eef2f7" stroke-width="1">
-            <line x1="46" y1="167.2" x2="624" y2="167.2"/><line x1="46" y1="130.4" x2="624" y2="130.4"/><line x1="46" y1="93.6" x2="624" y2="93.6"/><line x1="46" y1="56.8" x2="624" y2="56.8"/><line x1="46" y1="20" x2="624" y2="20"/>
-          </g>
-          <rect x="160" y="32.9" width="96" height="171.1" rx="6" fill="#94a3b8"/>
-          <rect x="414" y="158" width="96" height="46" rx="6" fill="#2563eb"/>
-          <text x="208" y="25" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">4.65h</text>
-          <text x="462" y="150" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">1.25h</text>
-          <text x="208" y="224" font-size="12.5" fill="#334155" text-anchor="middle">现状人工</text>
-          <text x="462" y="224" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="middle">平台落地后</text>
-          <g>
-            <rect x="290" y="70" width="130" height="26" rx="13" fill="#16a34a"/>
-            <text x="355" y="87" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">释放 3.4h · 七成</text>
-          </g>
-        </svg>
-      </div>
+    <div class="chart-card">
+      <h4>年人力成本（万元）</h4>
+      <div class="cap">现状 86.4 万 → 流程压缩后 37.8 万，释放 48.6 万产能</div>
+      <svg viewBox="0 0 640 250" role="img" aria-label="年人力成本对比柱状图">
+        <line x1="46" y1="20" x2="46" y2="204" stroke="#cbd5e1" stroke-width="1"/>
+        <line x1="46" y1="204" x2="624" y2="204" stroke="#cbd5e1" stroke-width="1"/>
+        <g font-size="11" fill="#94a3b8" text-anchor="end">
+          <text x="40" y="208">0</text><text x="40" y="171.2">20</text><text x="40" y="134.4">40</text><text x="40" y="97.6">60</text><text x="40" y="60.8">80</text><text x="40" y="24">100</text>
+        </g>
+        <g stroke="#eef2f7" stroke-width="1">
+          <line x1="46" y1="167.2" x2="624" y2="167.2"/><line x1="46" y1="130.4" x2="624" y2="130.4"/><line x1="46" y1="93.6" x2="624" y2="93.6"/><line x1="46" y1="56.8" x2="624" y2="56.8"/><line x1="46" y1="20" x2="624" y2="20"/>
+        </g>
+        <rect x="160" y="45" width="96" height="159" rx="6" fill="#94a3b8"/>
+        <rect x="414" y="134.4" width="96" height="69.6" rx="6" fill="#2563eb"/>
+        <text x="208" y="37" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">86.4 万</text>
+        <text x="462" y="126" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">37.8 万</text>
+        <text x="208" y="224" font-size="12.5" fill="#334155" text-anchor="middle">现状</text>
+        <text x="462" y="224" font-size="12.5" fill="#2563eb" font-weight="700" text-anchor="middle">流程压缩后</text>
+        <g>
+          <rect x="290" y="84" width="140" height="26" rx="13" fill="#16a34a"/>
+          <text x="360" y="101" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">释放 48.6 万产能</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-card">
+      <h4>单项目核心环节工时：现状 vs 平台落地后</h4>
+      <div class="cap">中值口径（小时/项目），区间明细见下方对照表；核心环节合计 4.65h → 1.25h，降约 73%</div>
+      <svg viewBox="0 0 700 330" role="img" aria-label="单项目核心环节工时横向条形图">
+        <g font-size="12" fill="#334155">
+          <rect x="168" y="8" width="14" height="11" rx="2" fill="#94a3b8"/>
+          <text x="188" y="18">现状（人工）</text>
+          <rect x="306" y="8" width="14" height="11" rx="2" fill="#2563eb"/>
+          <text x="326" y="18">平台落地后</text>
+        </g>
+        <text x="688" y="18" font-size="11" fill="#94a3b8" text-anchor="end">小时/项</text>
+        <g font-size="11" fill="#334155" text-anchor="end">
+          <text x="158" y="56">点表标准化</text>
+          <text x="158" y="98">标准点表→成套图</text>
+          <text x="158" y="140">点表出模块配置</text>
+          <text x="158" y="182">模块配置出BOM单</text>
+          <text x="158" y="224">BA图纸设计（摊薄）</text>
+          <text x="158" y="266" font-weight="700">核心环节小计</text>
+        </g>
+        <g font-size="11" fill="#94a3b8" text-anchor="middle">
+          <text x="168" y="318">0</text><text x="254.4" y="318">1</text><text x="340.8" y="318">2</text><text x="427.2" y="318">3</text><text x="513.6" y="318">4</text><text x="600" y="318">5</text>
+        </g>
+        <line x1="168" y1="296" x2="600" y2="296" stroke="#cbd5e1" stroke-width="1"/>
+        <g stroke="#eef2f7" stroke-width="1">
+          <line x1="254.4" y1="26" x2="254.4" y2="296"/><line x1="340.8" y1="26" x2="340.8" y2="296"/><line x1="427.2" y1="26" x2="427.2" y2="296"/><line x1="513.6" y1="26" x2="513.6" y2="296"/>
+        </g>
+        <rect x="168" y="46" width="64.8" height="13" rx="3" fill="#94a3b8"/>
+        <rect x="168" y="64" width="17.28" height="13" rx="3" fill="#2563eb"/>
+        <rect x="168" y="88" width="86.4" height="13" rx="3" fill="#94a3b8"/>
+        <rect x="168" y="106" width="21.6" height="13" rx="3" fill="#2563eb"/>
+        <rect x="168" y="130" width="129.6" height="13" rx="3" fill="#94a3b8"/>
+        <rect x="168" y="148" width="34.56" height="13" rx="3" fill="#2563eb"/>
+        <rect x="168" y="172" width="64.8" height="13" rx="3" fill="#94a3b8"/>
+        <rect x="168" y="190" width="17.28" height="13" rx="3" fill="#2563eb"/>
+        <rect x="168" y="214" width="56.16" height="13" rx="3" fill="#94a3b8"/>
+        <rect x="168" y="232" width="12.96" height="13" rx="3" fill="#2563eb"/>
+        <rect x="168" y="256" width="401.76" height="13" rx="3" fill="#475569"/>
+        <rect x="168" y="274" width="108" height="13" rx="3" fill="#1d4ed8"/>
+        <g font-size="10.5" font-weight="700">
+          <text x="240" y="57" fill="#475569">0.75</text><text x="193" y="75" fill="#1d4ed8">0.2</text>
+          <text x="262" y="99" fill="#475569">1</text><text x="197" y="117" fill="#1d4ed8">0.25</text>
+          <text x="305" y="141" fill="#475569">1.5</text><text x="210" y="159" fill="#1d4ed8">0.4</text>
+          <text x="240" y="183" fill="#475569">0.75</text><text x="193" y="201" fill="#1d4ed8">0.2</text>
+          <text x="231" y="225" fill="#475569">0.65</text><text x="189" y="243" fill="#1d4ed8">0.15</text>
+          <text x="577" y="267" fill="#fff">4.65h</text><text x="283" y="285" fill="#1d4ed8">1.25h</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="tw">
+      <table class="master">
+        <thead><tr><th class="c">环节</th><th>说明</th><th class="n">现状（h）</th><th class="n">测算取值（中间值）</th><th class="n">AI 落地后（h）</th><th class="n">节省（h）</th></tr></thead>
+        <tbody>
+          <tr><td class="c">点表标准化</td><td>市面不规则点表 → 崇实标准点表</td><td class="n">0.5–1</td><td class="n">0.75</td><td class="n">≈0.2</td><td class="n">0.55</td></tr>
+          <tr><td class="c">标准点表 → 成套图</td><td>模块与点名（已有功能）、柜体布局图</td><td class="n">0.5–1.5</td><td class="n">1</td><td class="n">≈0.25</td><td class="n">0.75</td></tr>
+          <tr><td class="c">点表出模块配置</td><td>在点表 / 标准点表上出模块配置</td><td class="n">1–2</td><td class="n">1.5</td><td class="n">≈0.4</td><td class="n">1.1</td></tr>
+          <tr><td class="c">模块配置出 BOM 单</td><td>按配置生成传感器、网关、软件等清单</td><td class="n">0.5–1</td><td class="n">0.75</td><td class="n">≈0.2</td><td class="n">0.55</td></tr>
+          <tr><td class="c">BA 图纸设计</td><td>20–30 个项目约 1 个需出图（单项目摊薄）；含平面图、原理图、系统图、点表</td><td class="n">0.5–0.8</td><td class="n">0.65</td><td class="n">≈0.15</td><td class="n">0.5</td></tr>
+          <tr class="sub"><td class="c" colspan="2">核心环节小计（区间）</td><td class="n">3.0–6.3</td><td class="n">4.65</td><td class="n">≈1.2</td><td class="n">3.45</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <h3 style="margin:20px 0 4px;font-size:16px;color:#0f2d5c">③ 投入回报 —— 约 17 个月收回，此后持续释放增量</h3>
@@ -242,20 +279,6 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 0 0}
       <li><b>经验沉淀为公司资产</b>：品牌参数、案例、施工规则统一入库，避免人员流动带走经验、导致出图质量波动，保障品牌一致性。</li>
     </ul>
 
-    <div class="tw">
-      <table class="master">
-        <thead><tr><th class="c">环节</th><th>说明</th><th class="n">现状（h）</th><th class="n">AI 落地后（h）</th><th class="n">节省（h）</th></tr></thead>
-        <tbody>
-          <tr><td class="c">点表标准化</td><td>市面不规则点表 → 崇实标准点表</td><td class="n">0.5–1</td><td class="n">≈0.2</td><td class="n">0.3–0.8</td></tr>
-          <tr><td class="c">标准点表 → 成套图</td><td>模块与点名（已有功能）、柜体布局图</td><td class="n">0.5–1.5</td><td class="n">≈0.25</td><td class="n">0.25–1.25</td></tr>
-          <tr><td class="c">点表出模块配置</td><td>在点表 / 标准点表上出模块配置</td><td class="n">1–2</td><td class="n">≈0.4</td><td class="n">0.6–1.6</td></tr>
-          <tr><td class="c">模块配置出 BOM 单</td><td>按配置生成传感器、网关、软件等清单</td><td class="n">0.5–1</td><td class="n">≈0.2</td><td class="n">0.3–0.8</td></tr>
-          <tr><td class="c">BA 图纸设计</td><td>20–30 个项目约 1 个需出图（单项目摊薄）；含平面图、原理图、系统图、点表</td><td class="n">0.5–0.8</td><td class="n">≈0.1–0.2</td><td class="n">0.3–0.6</td></tr>
-          <tr class="sub"><td class="c" colspan="2">核心环节小计（区间）</td><td class="n">3.0–6.3</td><td class="n">≈1.2–1.3</td><td class="n">1.7–5.1</td></tr>
-          <tr class="pto"><td class="c" colspan="2">测算取值（中间值）</td><td class="n">4.65</td><td class="n">1.25</td><td class="n">3.4</td></tr>
-        </tbody>
-      </table>
-    </div>
     <div class="blk note">
       <span class="lbl">测算说明</span>
       <p>1、按贵司现状「9 人、月薪 8,000 元、75% 流程占比」的示例测算；提效取中值（保守 57%、乐观 81%），回本为静态测算、未计资金成本，可按贵司实际人数、薪酬与年项目量现场重算。<br>2、核心环节工时为与贵司对接人员交流获得的实测情况，各环节取中值测算，正式采用前建议以 1 个真实项目校准；「等效释放人年」为工时折算，不代表裁员，实际体现为团队多出的可用时间。回本周期 = 方案含税投入 ÷ 年度释放产能。</p>
